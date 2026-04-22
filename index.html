@@ -22,10 +22,15 @@
   <!-- Navbar -->
   <header>
     <nav class="glass-strong nav-container">
-      <a href="index.html" class="nav-logo group">
-        <i data-lucide="atom"></i>
-        <span>QuestAcademy</span>
-      </a>
+      <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
+        <a href="index.html" class="nav-logo group">
+          <i data-lucide="atom"></i>
+          <span>QuestAcademy</span>
+        </a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
       <ul class="nav-links">
         <li><a href="index.html" class="nav-link active">Home</a></li>
         <li><a href="rules.html" class="nav-link">Rules</a></li>
@@ -61,7 +66,7 @@
           A mission where science, logic, and teamwork guide your path.
         </p>
 
-        <div id="home-actions" class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s; flex-direction: row;">
+        <div id="home-actions" class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
           <button id="home-unlock-btn" class="btn btn-lg glow-md" style="padding: 1.5rem 2rem;">
             <i data-lucide="lock" class="w-5 h-5"></i> Enter Access Code
           </button>
