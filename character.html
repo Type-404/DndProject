@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice & Discoveries</title>
+    <meta name="description" content="Select your character for Dice & Discoveries: A STEM Adventure Game.">
+    <link rel="stylesheet" href="character.css">
+    <!-- Playful but legible tech fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Screen 1: Character Selection -->
+        <section id="screen-character" class="screen active">
+            <header>
+                <div class="logo-container">
+                    <h1 class="game-title">DICE &amp; DISCOVERIES</h1>
+                </div>
+                <div class="narrative-tag">CORE-X PROTOCOL ACTIVE</div>
+                <p class="instruction">Choose Your Character</p>
+            </header>
+            <div class="character-grid" id="character-grid">
+                <!-- Character cards injected here -->
+            </div>
+        </section>
+
+        <!-- Screen 2: Background Selection -->
+        <section id="screen-background" class="screen">
+            <header>
+                <h1 class="game-title">Choose Your Background</h1>
+                <p id="character-selected-name" class="highlight-text">CHARACTER</p>
+            </header>
+            <div class="background-grid" id="background-grid">
+                <!-- Background cards injected here -->
+            </div>
+            <div class="actions">
+                <button class="btn btn-secondary" onclick="app.goBack('screen-character')">BACK</button>
+                <button class="btn btn-primary btn-game" id="btn-confirm-background" disabled
+                    onclick="app.confirmBackground()">CONFIRM BACKGROUND</button>
+            </div>
+        </section>
+
+        <!-- Screen 3: Summary Selection -->
+        <section id="screen-summary" class="screen">
+            <header>
+                <h1 class="game-title">MISSION BRIEFING</h1>
+                <p>INITIALIZATION COMPLETE</p>
+            </header>
+            <div class="summary-container">
+                <div class="summary-content" id="summary-content">
+                    <!-- Summary injected here -->
+                </div>
+                <div class="actions center">
+                    <button class="btn btn-secondary" onclick="app.goBack('screen-background')">RECONFIGURE</button>
+                    <button class="btn btn-primary pulse btn-start" onclick="app.startGame()">START GAME!</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ambient Background -->
+        <div class="ambient-background">
+            <div class="floating-shapes">
+                <div class="shape s1"></div>
+                <div class="shape s2"></div>
+                <div class="shape s3"></div>
+                <div class="shape s4"></div>
+            </div>
+            <div class="bg-gradient"></div>
+        </div>
+    </div>
+    <script src="character.js"></script>
+</body>
+
+</html>
