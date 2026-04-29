@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rules - QuestAcademy</title>
-  
+  <title>Rules - Dice & Discoveries</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <!-- Background Effects -->
@@ -23,8 +25,8 @@
     <nav class="glass-strong nav-container">
       <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
         <a href="index.html" class="nav-logo group">
-          <i data-lucide="atom"></i>
-          <span>QuestAcademy</span>
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
         </a>
         <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
           <i data-lucide="menu"></i>
@@ -48,178 +50,246 @@
   </header>
 
   <main>
-    <div class="max-w-5xl mx-auto px-6">
-      
-      <!-- Header -->
-      <div class="text-center mb-16 animate-fade-in-up">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Game <span class="text-primary text-glow">Rules</span></h1>
-        <p class="text-muted max-w-md mx-auto">Quick reference for gameplay mechanics</p>
+    <div class="rules-wrapper">
+      <div class="rules-container">
+
+        <!-- Header -->
+        <div class="text-center mb-20 animate-fade-in-up">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Game <span class="text-primary text-glow">Rules</span></h1>
+          <p class="text-muted max-w-md mx-auto mb-4">Quick reference guide for Dice & Discoveries gameplay</p>
+        </div>
+
+        <!-- Rules Grid -->
+        <div class="rules-grid">
+
+          <!-- Rule 1: Character Setup -->
+          <div class="glass rounded-xl rule-card animate-fade-in-up card-hover border"
+            style="border-color: rgba(0, 229, 255, 0.3);">
+            <div class="flex flex-col items-center justify-center text-center gap-4 mb-8">
+              <div class="w-14 h-14 rounded-lg flex items-center justify-center border flex-shrink-0"
+                style="background-color: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.3);">
+                <i data-lucide="user-cog" style="color: var(--primary); width: 28px; height: 28px;"></i>
+              </div>
+              <h2 class="font-semibold text-lg">Character Setup</h2>
+            </div>
+            <ul class="rule-card-list">
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Choose a STEM role</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Pick one background</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Gain a trait</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Rule 2: Player Actions -->
+          <div class="glass rounded-xl rule-card animate-fade-in-up card-hover border"
+            style="border-color: rgba(0, 229, 255, 0.3); animation-delay: 0.05s;">
+            <div class="flex flex-col items-center justify-center text-center gap-4 mb-8">
+              <div class="w-14 h-14 rounded-lg flex items-center justify-center border flex-shrink-0"
+                style="background-color: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.3);">
+                <i data-lucide="swords" style="color: var(--primary); width: 28px; height: 28px;"></i>
+              </div>
+              <h2 class="font-semibold text-lg">Player Actions</h2>
+            </div>
+            <ul class="rule-card-list">
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Attack challenges</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Inspect clues</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Boost teammates</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Natural 20 creates combo</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Rule 3: Dice Outcomes -->
+          <div class="glass rounded-xl rule-card animate-fade-in-up card-hover border"
+            style="border-color: rgba(0, 229, 255, 0.3); animation-delay: 0.1s;">
+            <div class="flex flex-col items-center justify-center text-center gap-4 mb-8">
+              <div class="w-14 h-14 rounded-lg flex items-center justify-center border flex-shrink-0"
+                style="background-color: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.3);">
+                <i data-lucide="dices" style="color: var(--primary); width: 28px; height: 28px;"></i>
+              </div>
+              <h2 class="font-semibold text-lg">Dice Outcomes</h2>
+            </div>
+            <ul class="rule-card-list">
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span><strong>1–9</strong> Failure</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span><strong>10–14</strong> Partial Success</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span><strong>15–19</strong> Success</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span><strong>20</strong> Critical Success</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Rule 4: Boss Encounters -->
+          <div class="glass rounded-xl rule-card animate-fade-in-up card-hover border"
+            style="border-color: rgba(0, 229, 255, 0.3); animation-delay: 0.15s;">
+            <div class="flex flex-col items-center justify-center text-center gap-4 mb-8">
+              <div class="w-14 h-14 rounded-lg flex items-center justify-center border flex-shrink-0"
+                style="background-color: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.3);">
+                <i data-lucide="zap" style="color: var(--primary); width: 28px; height: 28px;"></i>
+              </div>
+              <h2 class="font-semibold text-lg">Boss Encounters</h2>
+            </div>
+            <ul class="rule-card-list">
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Defeat using scientific steps</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Wrong moves may strengthen or transform the boss</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Boss attacks after all players act</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Rule 5: Puzzle Challenges -->
+          <div class="glass rounded-xl rule-card animate-fade-in-up card-hover border"
+            style="border-color: rgba(0, 229, 255, 0.3); animation-delay: 0.2s;">
+            <div class="flex flex-col items-center justify-center text-center gap-4 mb-8">
+              <div class="w-14 h-14 rounded-lg flex items-center justify-center border flex-shrink-0"
+                style="background-color: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.3);">
+                <i data-lucide="puzzle" style="color: var(--primary); width: 28px; height: 28px;"></i>
+              </div>
+              <h2 class="font-semibold text-lg">Puzzle Challenges</h2>
+            </div>
+            <ul class="rule-card-list">
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Use role abilities and traits</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Work together</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Failed actions may add setbacks</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Rule 6: Hints -->
+          <div class="glass rounded-xl rule-card animate-fade-in-up card-hover border"
+            style="border-color: rgba(0, 229, 255, 0.3); animation-delay: 0.25s;">
+            <div class="flex flex-col items-center justify-center text-center gap-4 mb-8">
+              <div class="w-14 h-14 rounded-lg flex items-center justify-center border flex-shrink-0"
+                style="background-color: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.3);">
+                <i data-lucide="lightbulb" style="color: var(--primary); width: 28px; height: 28px;"></i>
+              </div>
+              <h2 class="font-semibold text-lg">Hints</h2>
+            </div>
+            <ul class="rule-card-list">
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>3–4 hints for the campaign</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Use during puzzles or boss fights</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Spend carefully</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Rule 7: Dungeon Structure -->
+          <div class="glass rounded-xl rule-card animate-fade-in-up card-hover border"
+            style="border-color: rgba(0, 229, 255, 0.3); animation-delay: 0.3s;">
+            <div class="flex flex-col items-center justify-center text-center gap-4 mb-8">
+              <div class="w-14 h-14 rounded-lg flex items-center justify-center border flex-shrink-0"
+                style="background-color: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.3);">
+                <i data-lucide="map" style="color: var(--primary); width: 28px; height: 28px;"></i>
+              </div>
+              <h2 class="font-semibold text-lg">Dungeon Structure</h2>
+            </div>
+            <ul class="rule-card-list">
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>School map becomes the dungeon</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Blocks become rooms</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Complete encounters to unlock the geocache</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Rule 8: DM / Teacher Role -->
+          <div class="glass rounded-xl rule-card animate-fade-in-up card-hover border"
+            style="border-color: rgba(0, 229, 255, 0.3); animation-delay: 0.35s;">
+            <div class="flex flex-col items-center justify-center text-center gap-4 mb-8">
+              <div class="w-14 h-14 rounded-lg flex items-center justify-center border flex-shrink-0"
+                style="background-color: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.3);">
+                <i data-lucide="book-open" style="color: var(--primary); width: 28px; height: 28px;"></i>
+              </div>
+              <h2 class="font-semibold text-lg">DM / Teacher Role</h2>
+            </div>
+            <ul class="rule-card-list">
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Guides the story</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Controls puzzles and bosses</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span style="color: var(--primary); font-weight: 600;">•</span>
+                <span>Explains outcomes after rolls</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer note -->
+        <div class="text-center animate-fade-in-up" style="animation-delay: 0.4s;">
+          <p class="text-sm text-muted">Ready to start? Enter your access code on the <a href="index.html"
+              class="text-primary hover:underline" style="color: var(--primary);">home page</a> to access the journey.
+          </p>
+        </div>
       </div>
-
-      <!-- Rules Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        
-        <!-- Section 1 -->
-        <div class="glass rounded-xl p-5 hover:bg-white/5 transition-all animate-fade-in-up" style="animation-delay: 0.05s;">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center border" style="background-color: rgba(166, 51, 230, 0.1); border-color: rgba(166, 51, 230, 0.3);">
-              <i data-lucide="users" style="color: var(--primary); width: 16px;"></i>
-            </div>
-            <h2 class="font-semibold">Team Setup</h2>
-          </div>
-          <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Players work together in teams</span>
-            </li>
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>A teacher guides the experience</span>
-            </li>
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>A table map is used for navigation</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Section 2 -->
-        <div class="glass rounded-xl p-5 hover:bg-white/5 transition-all animate-fade-in-up" style="animation-delay: 0.1s;">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center border" style="background-color: rgba(166, 51, 230, 0.1); border-color: rgba(166, 51, 230, 0.3);">
-              <i data-lucide="user-cog" style="color: var(--primary); width: 16px;"></i>
-            </div>
-            <h2 class="font-semibold">Roles</h2>
-          </div>
-          <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Each player chooses a specialization</span>
-            </li>
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Multiple players can share roles</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Section 3 -->
-        <div class="glass rounded-xl p-5 hover:bg-white/5 transition-all animate-fade-in-up" style="animation-delay: 0.15s;">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center border" style="background-color: rgba(166, 51, 230, 0.1); border-color: rgba(166, 51, 230, 0.3);">
-              <i data-lucide="palette" style="color: var(--primary); width: 16px;"></i>
-            </div>
-            <h2 class="font-semibold">Backgrounds</h2>
-          </div>
-          <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Each role has unique backgrounds</span>
-            </li>
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Backgrounds provide useful traits</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Section 4 -->
-        <div class="glass rounded-xl p-5 hover:bg-white/5 transition-all animate-fade-in-up" style="animation-delay: 0.2s;">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center border" style="background-color: rgba(166, 51, 230, 0.1); border-color: rgba(166, 51, 230, 0.3);">
-              <i data-lucide="swords" style="color: var(--primary); width: 16px;"></i>
-            </div>
-            <h2 class="font-semibold">Player Actions</h2>
-          </div>
-          <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Attack: Engage with challenges</span>
-            </li>
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Inspect: Examine clues</span>
-            </li>
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Boost: Enhance team abilities</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Section 5 -->
-        <div class="glass rounded-xl p-5 hover:bg-white/5 transition-all animate-fade-in-up" style="animation-delay: 0.25s;">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center border" style="background-color: rgba(166, 51, 230, 0.1); border-color: rgba(166, 51, 230, 0.3);">
-              <i data-lucide="puzzle" style="color: var(--primary); width: 16px;"></i>
-            </div>
-            <h2 class="font-semibold">Encounters</h2>
-          </div>
-          <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Puzzles and bosses await</span>
-            </li>
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Teamwork is required to succeed</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Section 6 -->
-        <div class="glass rounded-xl p-5 hover:bg-white/5 transition-all animate-fade-in-up" style="animation-delay: 0.3s;">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center border" style="background-color: rgba(166, 51, 230, 0.1); border-color: rgba(166, 51, 230, 0.3);">
-              <i data-lucide="lightbulb" style="color: var(--primary); width: 16px;"></i>
-            </div>
-            <h2 class="font-semibold">Hints</h2>
-          </div>
-          <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Limited hints per stage</span>
-            </li>
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Use when the team is stuck</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Section 7 -->
-        <div class="glass rounded-xl p-5 hover:bg-white/5 transition-all animate-fade-in-up" style="animation-delay: 0.35s;">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center border" style="background-color: rgba(166, 51, 230, 0.1); border-color: rgba(166, 51, 230, 0.3);">
-              <i data-lucide="trending-up" style="color: var(--primary); width: 16px;"></i>
-            </div>
-            <h2 class="font-semibold">Progression</h2>
-          </div>
-          <ul class="space-y-2">
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>First stage happens at the table</span>
-            </li>
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Next stage unlocks after completion</span>
-            </li>
-            <li class="flex items-start gap-2 text-sm text-muted mb-2">
-              <i data-lucide="check-circle-2" style="width: 14px; opacity: 0.5;"></i>
-              <span>Final phase includes movement</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center animate-fade-in-up" style="animation-delay: 0.4s;">
-        <p class="text-sm text-muted"> Ready? Enter your access code on the <a href="index.html" class="text-primary hover:underline" style="color: var(--primary);">home page</a>.</p>
-      </div>
-
-    </div>
   </main>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

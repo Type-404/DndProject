@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   lucide.createIcons();
 
   // State
-  let journeyUnlocked = localStorage.getItem("questacademy-journey") === "true";
-  let radarUnlocked = localStorage.getItem("questacademy-radar") === "true";
+  let journeyUnlocked = localStorage.getItem("dice-discoveries-journey") === "true";
+  let radarUnlocked = localStorage.getItem("dice-discoveries-radar") === "true";
 
   // Check locks on page load
   updateLocks();
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       if (code === "journey") {
         journeyUnlocked = true;
-        localStorage.setItem("questacademy-journey", "true");
+        localStorage.setItem("dice-discoveries-journey", "true");
         accessError.classList.add("hidden");
         accessSuccess.classList.remove("hidden");
         accessSuccess.innerHTML = '<i data-lucide="check-circle-2" style="width: 16px;"></i><span>Journey unlocked!</span>';
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1500);
       } else if (code === "radar") {
         radarUnlocked = true;
-        localStorage.setItem("questacademy-radar", "true");
+        localStorage.setItem("dice-discoveries-radar", "true");
         accessError.classList.add("hidden");
         accessSuccess.classList.remove("hidden");
         accessSuccess.innerHTML = '<i data-lucide="check-circle-2" style="width: 16px;"></i><span>Radar unlocked!</span>';
@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       if (code === "radar") {
         radarUnlocked = true;
-        localStorage.setItem("questacademy-radar", "true");
+        localStorage.setItem("dice-discoveries-radar", "true");
         radarError.classList.add("hidden");
         radarSuccess.classList.remove("hidden");
         radarSuccess.innerHTML = '<i data-lucide="check-circle-2" style="width: 16px;"></i><span>Radar unlocked!</span>';

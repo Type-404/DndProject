@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuestAcademy</title>
-  
+  <title>Dice & Discoveries — A Physical STEM Adventure</title>
+  <meta name="description" content="Dice & Discoveries is a physical STEM adventure where teams solve puzzles, face science bosses, and use radar to uncover the final geocache.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="bg-grid">
 
   <!-- Background Effects -->
   <div class="bg-effects-wrapper">
@@ -24,8 +25,8 @@
     <nav class="glass-strong nav-container">
       <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
         <a href="index.html" class="nav-logo group">
-          <i data-lucide="atom"></i>
-          <span>QuestAcademy</span>
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
         </a>
         <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
           <i data-lucide="menu"></i>
@@ -49,122 +50,165 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center p-6" style="min-height: 80vh;">
-      <div class="max-w-4xl mx-auto text-center">
-        <div class="glass rounded-full px-4 py-2 mb-8 animate-fade-in-up inline-flex items-center gap-2">
-          <div class="w-2 h-2 rounded-full bg-primary animate-pulse" style="width: 8px; height: 8px; background-color: var(--primary);"></div>
-          <span class="text-sm text-muted">STEM Team Experience</span>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!--  HERO SECTION                                -->
+    <!-- ════════════════════════════════════════════ -->
+    <section class="hero-section" id="hero">
+      <!-- soft glow behind title -->
+      <div class="hero-glow"></div>
+
+      <div class="home-container hero-inner">
+        <div class="hero-badge glass animate-fade-in-up">
+          <span class="hero-badge-dot"></span>
+          <span>Team-Based STEM Adventure</span>
         </div>
-        
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
-          <span class="text-foreground">Learning</span> 
-          <span class="text-primary text-glow">Adventure</span>
+
+        <h1 class="hero-title animate-fade-in-up" style="animation-delay:.1s">
+          Dice &amp; Discoveries
         </h1>
-        
-        <p class="text-xl text-muted max-w-2xl mx-auto mb-12 animate-fade-in-up" style="animation-delay: 0.2s;">
-          A mission where science, logic, and teamwork guide your path.
+
+        <p class="hero-slogan animate-fade-in-up" style="animation-delay:.15s">
+          Every roll leads to discovery.
         </p>
 
-        <div id="home-actions" class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
-          <button id="home-unlock-btn" class="btn btn-lg glow-md" style="padding: 1.5rem 2rem;">
-            <i data-lucide="lock" class="w-5 h-5"></i> Enter Access Code
+        <p class="hero-desc animate-fade-in-up" style="animation-delay:.2s">
+          A physical STEM adventure where teams solve puzzles, face science bosses, and use radar to uncover the final geocache.
+        </p>
+
+        <div class="hero-actions animate-fade-in-up" style="animation-delay:.3s">
+          <button id="home-unlock-btn" class="btn btn-lg glow-md hover-glow-btn">
+            <i data-lucide="rocket" class="w-5 h-5"></i> Start Journey
           </button>
-          <a href="rules.html" class="btn btn-lg btn-outline" style="padding: 1.5rem 2rem; border-color: rgba(255,255,255,0.2);">
+          <a href="rules.html" class="btn btn-lg btn-outline-cyan hover-glow-btn">
             <i data-lucide="book-open" class="w-5 h-5"></i> View Rules
           </a>
         </div>
       </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="relative py-24 px-6">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">How It <span class="text-primary text-glow">Works</span></h2>
-          <p class="text-muted max-w-xl mx-auto">Follow the path from team formation to real-world exploration</p>
-        </div>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+    <!-- ════════════════════════════════════════════ -->
+    <!--  HOW IT WORKS                                -->
+    <!-- ════════════════════════════════════════════ -->
+    <section class="home-section" id="how-it-works">
+      <div class="home-container">
+        <h2 class="section-heading">How It <span class="text-primary text-glow">Works</span></h2>
+
+        <div class="card-grid card-grid--4">
           <!-- Step 1 -->
-          <div class="glass rounded-2xl p-6 text-center animate-fade-in-up">
-            <div class="mx-auto mb-4 w-12 h-12 rounded-full flex items-center justify-center border glow-sm" style="border-color: rgba(166, 51, 230, 0.3); background-color: rgba(166, 51, 230, 0.1); color: var(--primary);">
+          <div class="home-card animate-fade-in-up">
+            <div class="home-card__icon-wrap">
               <i data-lucide="users"></i>
             </div>
-            <h3 class="font-semibold mb-1">Form Your Team</h3>
-            <p class="text-sm text-muted">Gather your crew</p>
+            <h3 class="home-card__title">Form Your Team</h3>
+            <p class="home-card__desc">Gather 2-4 players and prepare for a collaborative quest.</p>
           </div>
           <!-- Step 2 -->
-          <div class="glass rounded-2xl p-6 text-center animate-fade-in-up" style="animation-delay: 0.1s;">
-            <div class="mx-auto mb-4 w-12 h-12 rounded-full flex items-center justify-center border glow-sm" style="border-color: rgba(166, 51, 230, 0.3); background-color: rgba(166, 51, 230, 0.1); color: var(--primary);">
+          <div class="home-card animate-fade-in-up" style="animation-delay:.1s">
+            <div class="home-card__icon-wrap">
               <i data-lucide="user-cog"></i>
             </div>
-            <h3 class="font-semibold mb-1">Choose Roles</h3>
-            <p class="text-sm text-muted">Pick specializations</p>
+            <h3 class="home-card__title">Choose Your Role</h3>
+            <p class="home-card__desc">Pick a STEM-based character with unique abilities.</p>
           </div>
           <!-- Step 3 -->
-          <div class="glass rounded-2xl p-6 text-center animate-fade-in-up" style="animation-delay: 0.2s;">
-            <div class="mx-auto mb-4 w-12 h-12 rounded-full flex items-center justify-center border glow-sm" style="border-color: rgba(166, 51, 230, 0.3); background-color: rgba(166, 51, 230, 0.1); color: var(--primary);">
+          <div class="home-card animate-fade-in-up" style="animation-delay:.2s">
+            <div class="home-card__icon-wrap">
               <i data-lucide="puzzle"></i>
             </div>
-            <h3 class="font-semibold mb-1">Solve Challenges</h3>
-            <p class="text-sm text-muted">Apply your skills</p>
+            <h3 class="home-card__title">Solve Challenges</h3>
+            <p class="home-card__desc">Defeat science bosses using logic and teamwork.</p>
           </div>
           <!-- Step 4 -->
-          <div class="glass rounded-2xl p-6 text-center animate-fade-in-up" style="animation-delay: 0.3s;">
-            <div class="mx-auto mb-4 w-12 h-12 rounded-full flex items-center justify-center border glow-sm" style="border-color: rgba(166, 51, 230, 0.3); background-color: rgba(166, 51, 230, 0.1); color: var(--primary);">
+          <div class="home-card animate-fade-in-up" style="animation-delay:.3s">
+            <div class="home-card__icon-wrap">
               <i data-lucide="navigation"></i>
             </div>
-            <h3 class="font-semibold mb-1">Explore Real Locations</h3>
-            <p class="text-sm text-muted">Enter the world</p>
+            <h3 class="home-card__title">Find the Cache</h3>
+            <p class="home-card__desc">Use radar tools to locate the hidden geocache.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Roles Section -->
-    <section class="relative py-24 px-6" style="background-color: rgba(255,255,255,0.02);">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold mb-3">Choose Your <span class="text-primary text-glow">Role</span></h2>
-          <p class="text-muted max-w-md mx-auto">Each role brings unique abilities to help your team</p>
-        </div>
-        
-        <div class="grid grid-cols-2 lg:grid-cols-5 gap-4" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
-          <div class="glass p-5 rounded-xl text-center hover:scale-105 transition-all">
-            <div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mx-auto mb-3 text-emerald-400" style="color: #34d399;">
+    <!-- ════════════════════════════════════════════ -->
+    <!--  GAME FEATURES                               -->
+    <!-- ════════════════════════════════════════════ -->
+    <section class="home-section home-section--alt" id="game-features">
+      <div class="home-container">
+        <h2 class="section-heading">Game <span class="text-primary text-glow">Features</span></h2>
+
+        <div class="card-grid card-grid--3">
+          <!-- Feature 1 -->
+          <div class="home-card animate-fade-in-up">
+            <div class="home-card__icon-wrap">
               <i data-lucide="flask-conical"></i>
             </div>
-            <h3 class="font-semibold mb-1 text-sm">Chemist</h3>
-            <p class="text-xs text-muted">Master of reactions</p>
+            <h3 class="home-card__title">Science-Based Challenges</h3>
+            <p class="home-card__desc">Apply real scientific principles to overcome obstacles and defeat complex bosses.</p>
           </div>
-          <div class="glass p-5 rounded-xl text-center hover:scale-105 transition-all">
-            <div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mx-auto mb-3" style="color: #fbbf24;">
-              <i data-lucide="wrench"></i>
+          <!-- Feature 2 -->
+          <div class="home-card animate-fade-in-up" style="animation-delay:.1s">
+            <div class="home-card__icon-wrap">
+              <i data-lucide="network"></i>
             </div>
-            <h3 class="font-semibold mb-1 text-sm">Engineer</h3>
-            <p class="text-xs text-muted">Problem solver</p>
+            <h3 class="home-card__title">Team Collaboration</h3>
+            <p class="home-card__desc">Combine different roles and abilities to create powerful synergies.</p>
           </div>
-          <div class="glass p-5 rounded-xl text-center hover:scale-105 transition-all">
-            <div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mx-auto mb-3" style="color: #60a5fa;">
-              <i data-lucide="calculator"></i>
+          <!-- Feature 3 -->
+          <div class="home-card animate-fade-in-up" style="animation-delay:.2s">
+            <div class="home-card__icon-wrap">
+              <i data-lucide="map-pin"></i>
             </div>
-            <h3 class="font-semibold mb-1 text-sm">Mathematician</h3>
-            <p class="text-xs text-muted">Numbers reveal truth</p>
+            <h3 class="home-card__title">Real-World Exploration</h3>
+            <p class="home-card__desc">Navigate the real world using radar tools to locate hidden geocaches.</p>
           </div>
-          <div class="glass p-5 rounded-xl text-center hover:scale-105 transition-all">
-            <div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mx-auto mb-3" style="color: #22d3ee;">
-              <i data-lucide="code"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!--  CHARACTER SYSTEM                            -->
+    <!-- ════════════════════════════════════════════ -->
+    <section class="home-section" id="character-system">
+      <div class="home-container">
+        <h2 class="section-heading">Your <span class="text-primary text-glow">Character Matters</span></h2>
+        <p class="section-sub">
+          Each player receives a physical character card with a STEM role, background, trait, and ability.
+        </p>
+
+        <div class="card-grid card-grid--4">
+          <!-- Role -->
+          <div class="home-card home-card--sm animate-fade-in-up">
+            <div class="home-card__icon-wrap home-card__icon-wrap--sm">
+              <i data-lucide="shield"></i>
             </div>
-            <h3 class="font-semibold mb-1 text-sm">Programmer</h3>
-            <p class="text-xs text-muted">Logic flows through code</p>
+            <h3 class="home-card__title">Role</h3>
+            <p class="home-card__desc">Your STEM discipline focus.</p>
           </div>
-          <div class="glass p-5 rounded-xl text-center hover:scale-105 transition-all">
-            <div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mx-auto mb-3" style="color: #818cf8;">
-              <i data-lucide="atom"></i>
+          <!-- Background -->
+          <div class="home-card home-card--sm animate-fade-in-up" style="animation-delay:.1s">
+            <div class="home-card__icon-wrap home-card__icon-wrap--sm">
+              <i data-lucide="scroll-text"></i>
             </div>
-            <h3 class="font-semibold mb-1 text-sm">Physicist</h3>
-            <p class="text-xs text-muted">Understanding forces</p>
+            <h3 class="home-card__title">Background</h3>
+            <p class="home-card__desc">Your character's origin story.</p>
+          </div>
+          <!-- Trait -->
+          <div class="home-card home-card--sm animate-fade-in-up" style="animation-delay:.2s">
+            <div class="home-card__icon-wrap home-card__icon-wrap--sm">
+              <i data-lucide="sparkles"></i>
+            </div>
+            <h3 class="home-card__title">Trait</h3>
+            <p class="home-card__desc">A unique personality perk.</p>
+          </div>
+          <!-- Ability -->
+          <div class="home-card home-card--sm animate-fade-in-up" style="animation-delay:.3s">
+            <div class="home-card__icon-wrap home-card__icon-wrap--sm">
+              <i data-lucide="zap"></i>
+            </div>
+            <h3 class="home-card__title">Ability</h3>
+            <p class="home-card__desc">A special power for challenges.</p>
           </div>
         </div>
       </div>
@@ -182,11 +226,11 @@
       <form id="access-form">
         <input type="text" id="access-input" class="input mb-4" placeholder="Enter code..." style="text-align: center; font-size: 1.125rem; font-weight: bold; padding: 1rem;" autocomplete="off">
         <p class="text-xs text-muted mb-4">Codes: <span class="text-primary">journey</span> or <span class="text-primary">radar</span></p>
-        
+
         <div id="access-error" class="hidden mb-4 text-destructive text-sm flex items-center justify-center gap-2">
           <i data-lucide="x-circle" style="width: 16px;"></i> Invalid access code
         </div>
-        
+
         <div id="access-success" class="hidden mb-4 text-primary text-sm flex items-center justify-center gap-2">
            <!-- Handled by JS -->
         </div>
