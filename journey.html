@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Journey - QuestAcademy</title>
+  <title>Journey - Dice & Discoveries</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,8 +24,8 @@
     <nav class="glass-strong nav-container">
       <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
         <a href="index.html" class="nav-logo group">
-          <i data-lucide="atom"></i>
-          <span>QuestAcademy</span>
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
         </a>
         <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
           <i data-lucide="menu"></i>
@@ -51,7 +51,7 @@
   <main>
     <div id="journey-lock-screen" class="max-w-xl mx-auto text-center hidden" style="margin-top: 4rem;">
       <div class="glass rounded-2xl p-12 animate-fade-in-up">
-        <div class="w-20 h-20 rounded-full flex items-center justify-center border mx-auto mb-6" style="background-color: rgba(166, 51, 230, 0.1); border-color: rgba(166, 51, 230, 0.3);">
+        <div class="w-20 h-20 rounded-full flex items-center justify-center border mx-auto mb-6" style="background-color: rgba(0, 229, 255, 0.1); border-color: rgba(0, 229, 255, 0.3);">
           <i data-lucide="lock" style="width: 40px; height: 40px; color: var(--primary);"></i>
         </div>
         <h2 class="text-3xl font-bold mb-4">Journey Locked</h2>
@@ -63,71 +63,78 @@
     </div>
 
     <div id="journey-content" class="max-w-5xl mx-auto hidden">
-      <div class="text-center mb-12 animate-fade-in-up">
+      <div class="text-center mb-4 animate-fade-in-up">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Your <span class="text-primary text-glow">Journey</span></h1>
-        <p class="text-muted max-w-2xl mx-auto">Click each step to progress through your adventure. Complete all steps to unlock the exploration phase.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <!-- Journey Intro -->
+      <div class="glass rounded-xl p-6 mb-12 animate-fade-in-up text-center" style="animation-delay: 0.05s;">
+        <p class="text-muted max-w-2xl mx-auto">
+          The journey page shows the overall flow of the physical game, from table setup to real-world exploration. 
+          Each step builds on the last as your team progresses through the adventure.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
         
         <!-- Step 1 -->
-        <div class="journey-card glass animate-fade-in-up" data-step="1">
+        <div class="journey-card glass animate-fade-in-up card-hover" data-step="1">
           <div class="journey-badge bg-secondary text-muted border border-solid">1</div>
-          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-secondary" style="border-radius: 0.75rem;">
+          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(0, 229, 255, 0.1); color: var(--primary);">
             <i data-lucide="users"></i>
           </div>
           <h3 class="font-semibold mb-2">Team Formation</h3>
-          <p class="text-sm text-muted">Form your team and assign initial roles to each member</p>
+          <p class="text-sm text-muted">Gather your group and prepare for the mission</p>
         </div>
 
         <!-- Step 2 -->
-        <div class="journey-card glass animate-fade-in-up" data-step="2">
+        <div class="journey-card glass animate-fade-in-up card-hover" data-step="2" style="animation-delay: 0.05s;">
           <div class="journey-badge bg-secondary text-muted border border-solid">2</div>
-          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-secondary" style="border-radius: 0.75rem;">
+          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(0, 229, 255, 0.1); color: var(--primary);">
             <i data-lucide="user-cog"></i>
           </div>
           <h3 class="font-semibold mb-2">Role Selection</h3>
-          <p class="text-sm text-muted">Choose your specialization and background traits</p>
+          <p class="text-sm text-muted">Choose a STEM role and receive your character card</p>
         </div>
 
         <!-- Step 3 -->
-        <div class="journey-card glass animate-fade-in-up" data-step="3">
+        <div class="journey-card glass animate-fade-in-up card-hover" data-step="3" style="animation-delay: 0.1s;">
           <div class="journey-badge bg-secondary text-muted border border-solid">3</div>
-          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-secondary" style="border-radius: 0.75rem;">
+          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(0, 229, 255, 0.1); color: var(--primary);">
             <i data-lucide="book-open"></i>
           </div>
           <h3 class="font-semibold mb-2">Story Begins</h3>
-          <p class="text-sm text-muted">The narrative unfolds and your mission is revealed</p>
+          <p class="text-sm text-muted">The DM introduces the dungeon and mission</p>
         </div>
 
         <!-- Step 4 -->
-        <div class="journey-card glass animate-fade-in-up" data-step="4">
+        <div class="journey-card glass animate-fade-in-up card-hover" data-step="4" style="animation-delay: 0.15s;">
           <div class="journey-badge bg-secondary text-muted border border-solid">4</div>
-          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-secondary" style="border-radius: 0.75rem;">
+          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(0, 229, 255, 0.1); color: var(--primary);">
             <i data-lucide="swords"></i>
           </div>
-          <h3 class="font-semibold mb-2">Challenge</h3>
-          <p class="text-sm text-muted">Face obstacles and puzzles that test your skills</p>
+          <h3 class="font-semibold mb-2">Challenge Phase</h3>
+          <p class="text-sm text-muted">Solve puzzles and face science-based bosses</p>
         </div>
 
         <!-- Step 5 -->
-        <div class="journey-card glass animate-fade-in-up" data-step="5">
+        <div class="journey-card glass animate-fade-in-up card-hover" data-step="5" style="animation-delay: 0.2s;">
           <div class="journey-badge bg-secondary text-muted border border-solid">5</div>
-          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-secondary" style="border-radius: 0.75rem;">
+          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(0, 229, 255, 0.1); color: var(--primary);">
             <i data-lucide="puzzle"></i>
           </div>
-          <h3 class="font-semibold mb-2">Puzzle Progress</h3>
-          <p class="text-sm text-muted">Work together to solve complex problems</p>
+          <h3 class="font-semibold mb-2">Progress Unlocks</h3>
+          <p class="text-sm text-muted">Complete encounters to reveal the next objective</p>
         </div>
 
         <!-- Step 6 -->
-        <div class="journey-card glass animate-fade-in-up" data-step="6">
+        <div class="journey-card glass animate-fade-in-up card-hover" data-step="6" style="animation-delay: 0.25s;">
           <div class="journey-badge bg-secondary text-muted border border-solid">6</div>
-          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-secondary" style="border-radius: 0.75rem;">
+          <div class="icon-wrap w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(0, 229, 255, 0.1); color: var(--primary);">
             <i data-lucide="navigation"></i>
           </div>
           <h3 class="font-semibold mb-2">Exploration</h3>
-          <p class="text-sm text-muted">The real-world adventure phase begins</p>
+          <p class="text-sm text-muted">Use the radar page to locate the final geocache</p>
         </div>
       </div>
 
@@ -150,7 +157,7 @@
 
       <!-- Bottom Progress pill -->
       <div class="fixed" style="bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 20;">
-        <div class="glass rounded-full px-6 py-3 shadow-lg flex items-center gap-3">
+        <div class="glass rounded-full px-8 py-4 shadow-lg flex items-center gap-4">
           <span class="text-sm text-muted">Progress</span>
           <span class="text-sm font-bold text-foreground" id="journey-progress-text">0/6</span>
         </div>
@@ -162,12 +169,12 @@
   <div id="radar-modal" class="modal-overlay">
     <div class="modal-content glass-strong" style="max-width: 400px; text-align: center;">
       <button id="radar-modal-close" class="modal-close"><i data-lucide="x"></i></button>
-      <h2 class="text-2xl font-bold mb-2">Enter Radar Code</h2>
-      <p class="text-muted text-sm mb-6">Enter the exploration code to access the radar and map.</p>
+      <h2 class="text-2xl font-bold mb-2">Enter Exploration Code</h2>
+      <p class="text-muted text-sm mb-6">Enter the code provided by your teacher to access the radar and map.</p>
 
       <form id="radar-form">
-        <input type="text" id="radar-input" class="input mb-4" placeholder="Enter radar code..." style="text-align: center; font-size: 1.125rem; font-weight: bold; padding: 1rem;" autocomplete="off">
-        
+        <input type="text" id="radar-input" class="input mb-4" placeholder="Enter exploration code..." style="text-align: center; font-size: 1.125rem; font-weight: bold; padding: 1rem;" autocomplete="off">
+
         <div id="radar-error" class="hidden mb-4 text-destructive text-sm flex items-center justify-center gap-2">
           <i data-lucide="x-circle" style="width: 16px;"></i> Invalid code
         </div>
