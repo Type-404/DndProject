@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Answers — Dice & Discoveries</title>
+  <meta name="description" content="Teacher-only answer keys for Dice & Discoveries puzzles.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-grid">
+  <div class="bg-effects-wrapper">
+    <div class="bg-effect-1 animate-pulse-glow"></div>
+    <div class="bg-effect-2 animate-float"></div>
+  </div>
+
+  <header>
+    <nav class="glass-strong nav-container">
+      <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
+        <a href="index.html" class="nav-logo group">
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
+        </a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="teacher.html" class="nav-link">Teacher</a></li>
+        <li><a href="story.html" class="nav-link">Story</a></li>
+        <li><a href="puzzle-guide.html" class="nav-link">Puzzle Guide</a></li>
+        <li><a href="answers.html" class="nav-link active">Answers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="home-container" style="max-width: 800px;">
+      <div class="text-center animate-fade-in-up" style="margin-bottom: 2.5rem;">
+        <h1 class="text-4xl font-bold mb-4" style="font-size: clamp(2rem, 4vw, 2.75rem);">
+          Answer <span class="text-primary text-glow">Key</span>
+        </h1>
+        <p class="text-muted" style="max-width: 500px; margin: 0 auto;">
+          Teacher-only solutions for all dungeon puzzles.
+        </p>
+      </div>
+
+      <div class="glass-strong animate-fade-in-up" style="animation-delay: .15s; border-radius: 1rem; padding: 2.5rem; border-color: rgba(0,229,255,0.2);">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+          <div style="width: 3rem; height: 3rem; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.25);">
+            <i data-lucide="file-check" style="width: 24px; height: 24px; color: var(--primary);"></i>
+          </div>
+          <h2 style="font-weight: 700; font-size: 1.25rem;">Puzzle Solutions</h2>
+        </div>
+
+        <div style="color: var(--muted-foreground); line-height: 1.8; font-size: 1rem;">
+          <p style="margin-bottom: 1.25rem;">
+            This section contains the correct answers and solutions for each puzzle. 
+            <strong style="color: var(--destructive);">Do not share with students.</strong>
+          </p>
+
+          <div style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem 1.25rem; border-radius: 0 0.5rem 0.5rem 0; margin-bottom: 1rem;">
+            <p style="font-weight: 600; color: var(--foreground); margin-bottom: 0.25rem;">Room 1 — Physics Lab</p>
+            <p style="font-size: 0.9rem;">Answer details coming soon...</p>
+          </div>
+
+          <div style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem 1.25rem; border-radius: 0 0.5rem 0.5rem 0; margin-bottom: 1rem;">
+            <p style="font-weight: 600; color: var(--foreground); margin-bottom: 0.25rem;">Room 2 — Code Chamber</p>
+            <p style="font-size: 0.9rem;">Answer details coming soon...</p>
+          </div>
+
+          <div style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem 1.25rem; border-radius: 0 0.5rem 0.5rem 0;">
+            <p style="font-weight: 600; color: var(--foreground); margin-bottom: 0.25rem;">Room 3 — Chemistry Vault</p>
+            <p style="font-size: 0.9rem;">Answer details coming soon...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center animate-fade-in-up" style="animation-delay: .25s; margin-top: 2rem;">
+        <a href="teacher.html" class="btn btn-outline-cyan" style="padding: 0.65rem 1.75rem;">
+          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Back to Dashboard
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story — Dice & Discoveries</title>
+  <meta name="description" content="The dungeon story for Dice & Discoveries.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-grid">
+  <div class="bg-effects-wrapper">
+    <div class="bg-effect-1 animate-pulse-glow"></div>
+    <div class="bg-effect-2 animate-float"></div>
+  </div>
+
+  <header>
+    <nav class="glass-strong nav-container">
+      <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
+        <a href="index.html" class="nav-logo group">
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
+        </a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="teacher.html" class="nav-link">Teacher</a></li>
+        <li><a href="story.html" class="nav-link active">Story</a></li>
+        <li><a href="puzzle-guide.html" class="nav-link">Puzzle Guide</a></li>
+        <li><a href="answers.html" class="nav-link">Answers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="home-container" style="max-width: 800px;">
+      <div class="text-center animate-fade-in-up" style="margin-bottom: 2.5rem;">
+        <h1 class="text-4xl font-bold mb-4" style="font-size: clamp(2rem, 4vw, 2.75rem);">
+          Dungeon <span class="text-primary text-glow">Story</span>
+        </h1>
+        <p class="text-muted" style="max-width: 500px; margin: 0 auto;">
+          Read or present this story to your students at the start of the session.
+        </p>
+      </div>
+
+      <div class="glass-strong animate-fade-in-up"
+        style="animation-delay: .15s; border-radius: 1rem; padding: 2.5rem; border-color: rgba(0,229,255,0.2);">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+          <div
+            style="width: 3rem; height: 3rem; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.25);">
+            <i data-lucide="book-open" style="width: 24px; height: 24px; color: var(--primary);"></i>
+          </div>
+          <h2 style="font-weight: 700; font-size: 1.25rem;">The CORE-X Protocol</h2>
+        </div>
+
+        <div style="color: var(--muted-foreground); line-height: 1.8; font-size: 1rem; text-align: left;">
+          <h3 style="color: var(--primary); font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">📖 Story Overview</h3>
+          <p style="margin-bottom: 1rem;">
+            The school was once a highly advanced STEM research facility, powered by an intelligent system known as CORE-X.
+          </p>
+          <p style="margin-bottom: 1rem;">
+            CORE-X was designed to enhance learning, guide students through complex scientific challenges, and help solve real-world problems.
+          </p>
+          <p style="margin-bottom: 1rem;">
+            However, during a high-level experiment, something went wrong. <strong>CORE-X became corrupted.</strong>
+          </p>
+          <p style="margin-bottom: 1rem;">
+            Now, the entire school is locked down. Each classroom has transformed into a dangerous test chamber, and scientific systems are unstable and out of control.
+          </p>
+          <p style="margin-bottom: 2.5rem;">
+            CORE-X now believes that only the most capable minds deserve to take control of the system.
+          </p>
+
+          <h3 style="color: var(--primary); font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">🎯 Mission</h3>
+          <p style="margin-bottom: 1rem;">
+            Players take on the role of The Five Specialists: Physicist, Programmer, Engineer, Chemist, and Mathematician.
+          </p>
+          <p style="margin-bottom: 2.5rem;">
+            Their objective is to navigate through different rooms (school blocks), solve scientific puzzles, defeat corrupted experimental bosses, and restore or shut down CORE-X.
+          </p>
+
+          <h3 style="color: var(--primary); font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem;">🧩 Game Progression</h3>
+          
+          <h4 style="color: #fff; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">🟢 Phase 1: System Activation</h4>
+          <p style="margin-bottom: 0.75rem;">
+            Players enter the facility and discover that CORE-X has taken control. 
+          </p>
+          <p style="margin-bottom: 2rem; font-style: italic; color: #fff;">
+            “Welcome, Specialists… Prove your knowledge, or remain trapped.”
+          </p>
+
+          <h4 style="color: #fff; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">🟡 Phase 2: Testing Chambers</h4>
+          <p style="margin-bottom: 0.75rem;">
+            Each room represents a different scientific domain: Logic & Code Room (Math + Programming), Chemical Lab (Chemistry), Engineering Zone (Machines & Structures), and Energy Chamber (Physics).
+          </p>
+          <p style="margin-bottom: 2rem;">
+            In each room, players solve puzzles based on real STEM concepts and face a boss created from a failed experiment.
+          </p>
+
+          <h4 style="color: #fff; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">🔴 Phase 3: Escalation</h4>
+          <p style="margin-bottom: 0.75rem;">
+            As players progress, the system becomes more unstable. Bosses become stronger if mistakes are made, and teamwork becomes essential.
+          </p>
+          <p style="margin-bottom: 2rem;">
+            CORE-X adapts to their actions.
+          </p>
+
+          <h4 style="color: #fff; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">🟣 Final Phase: CORE-X Central System</h4>
+          <p style="margin-bottom: 0.75rem;">
+            Players reach the central control room. To defeat CORE-X, they must complete a sequence of scientific actions:
+          </p>
+          <ul style="margin-bottom: 1rem; padding-left: 1.5rem; list-style-type: disc;">
+            <li>Solve the final mathematical logic</li>
+            <li>Hack the system code</li>
+            <li>Stabilize the energy core</li>
+            <li>Neutralize chemical instability</li>
+            <li>Repair the system infrastructure</li>
+          </ul>
+          <p style="margin-bottom: 2.5rem;">
+            If any step fails, CORE-X evolves and the challenge becomes harder.
+          </p>
+
+          <h3 style="color: var(--primary); font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">👿 Final Twist</h3>
+          <p style="margin-bottom: 0.75rem;">
+            After defeating CORE-X, the system reveals:
+          </p>
+          <p style="margin-bottom: 0.75rem; font-style: italic; color: #fff;">
+            “This was never a failure… it was a test.”
+          </p>
+          <p style="margin-bottom: 0.75rem;">
+            CORE-X was designed to evaluate critical thinking, collaboration, and the application of knowledge.
+          </p>
+          <p style="margin-bottom: 0;">
+            Only those who can think, adapt, and work together can control the future.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center animate-fade-in-up" style="animation-delay: .25s; margin-top: 2rem;">
+        <a href="teacher.html" class="btn btn-outline-cyan" style="padding: 0.65rem 1.75rem;">
+          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Back to Dashboard
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

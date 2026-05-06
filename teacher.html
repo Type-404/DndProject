@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard — Dice & Discoveries</title>
+  <meta name="description"
+    content="Teacher dashboard for Dice & Discoveries. Generate game PINs, manage story, puzzles, and answers.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-grid">
+
+  <!-- Background Effects -->
+  <div class="bg-effects-wrapper">
+    <div class="bg-effect-1 animate-pulse-glow"></div>
+    <div class="bg-effect-2 animate-float"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="glass-strong nav-container">
+      <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
+        <a href="index.html" class="nav-logo group">
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
+        </a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="teacher.html" class="nav-link active">Teacher</a></li>
+        <li><a href="story.html" class="nav-link">Story</a></li>
+        <li><a href="puzzle-guide.html" class="nav-link">Puzzle Guide</a></li>
+        <li><a href="answers.html" class="nav-link">Answers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="home-container">
+
+      <!-- Page Header -->
+      <div class="text-center mb-12 animate-fade-in-up" style="margin-bottom: 3rem;">
+        <h1 class="text-4xl font-bold mb-4" style="font-size: clamp(2rem, 4vw, 2.75rem);">
+          Teacher <span class="text-primary text-glow">Dashboard</span>
+        </h1>
+        <p class="text-muted" style="max-width: 520px; margin: 0 auto; font-size: 1.05rem; line-height: 1.65;">
+          Start the session, generate a game PIN, and guide students through the adventure.
+        </p>
+      </div>
+      <!-- Teacher Tools -->
+      <div style="margin-top: 3rem;">
+        <h2 class="section-heading animate-fade-in-up" style="animation-delay: .2s;">
+          Teacher <span class="text-primary text-glow">Tools</span>
+        </h2>
+        <p class="section-sub animate-fade-in-up" style="animation-delay: .25s;">
+          Resources to guide the game session.
+        </p>
+
+        <div class="card-grid card-grid--3 animate-fade-in-up" style="animation-delay: .3s;">
+
+          <!-- Story -->
+          <a href="story.html" class="home-card" style="text-decoration: none; cursor: pointer;">
+            <div class="home-card__icon-wrap">
+              <i data-lucide="book-open"></i>
+            </div>
+            <h3 class="home-card__title">Story</h3>
+            <p class="home-card__desc">Read or present the dungeon story to your students.</p>
+            <span class="btn glow-sm" style="margin-top: auto; font-size: 0.85rem; padding: 0.5rem 1.25rem;">
+              Open Story
+            </span>
+          </a>
+
+          <!-- Puzzle Guide -->
+          <a href="puzzle-guide.html" class="home-card" style="text-decoration: none; cursor: pointer;">
+            <div class="home-card__icon-wrap">
+              <i data-lucide="puzzle"></i>
+            </div>
+            <h3 class="home-card__title">Puzzle Guide</h3>
+            <p class="home-card__desc">View puzzle instructions and dungeon challenges.</p>
+            <span class="btn glow-sm" style="margin-top: auto; font-size: 0.85rem; padding: 0.5rem 1.25rem;">
+              Open Puzzle Guide
+            </span>
+          </a>
+
+          <!-- Answers -->
+          <a href="answers.html" class="home-card" style="text-decoration: none; cursor: pointer;">
+            <div class="home-card__icon-wrap">
+              <i data-lucide="file-check"></i>
+            </div>
+            <h3 class="home-card__title">Answers</h3>
+            <p class="home-card__desc">Check teacher-only puzzle solutions and answer keys.</p>
+            <span class="btn glow-sm" style="margin-top: auto; font-size: 0.85rem; padding: 0.5rem 1.25rem;">
+              Open Answers
+            </span>
+          </a>
+
+        </div>
+      </div>
+      <!-- PIN Generator Card -->
+      <div class="teacher-pin-card glass-strong animate-fade-in-up" style="animation-delay: .1s; margin-top: 4rem;" id="pin-card">
+        <div class="teacher-pin-card__inner" id="pin-state-generate">
+          <div class="teacher-pin-card__icon-wrap">
+            <i data-lucide="key-round" style="width: 32px; height: 32px; color: var(--primary);"></i>
+          </div>
+          <h2 class="teacher-pin-card__title">Start Game Session</h2>
+          <p class="teacher-pin-card__desc">Generate a unique PIN for students to join this session.</p>
+          <button class="btn btn-lg glow-md hover-glow-btn" id="generate-pin-btn"
+            style="font-size: 1.05rem; padding: 0.9rem 2.25rem;">
+            <i data-lucide="sparkles" style="width: 20px; height: 20px;"></i>
+            Generate Game PIN
+          </button>
+        </div>
+
+        <div class="teacher-pin-card__inner hidden" id="pin-state-active">
+          <p class="teacher-pin-card__label">Game PIN</p>
+          <div class="teacher-pin-display" id="pin-display">----</div>
+          <p class="teacher-pin-card__hint">Students enter this PIN to join the game.</p>
+          <button class="btn btn-outline-cyan" id="regenerate-pin-btn" style="margin-top: 1rem;">
+            <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i>
+            Generate New PIN
+          </button>
+        </div>
+      </div>
+
+
+
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="script.js"></script>
+  <script>
+    lucide.createIcons();
+
+    const generateBtn = document.getElementById('generate-pin-btn');
+    const regenerateBtn = document.getElementById('regenerate-pin-btn');
+    const stateGenerate = document.getElementById('pin-state-generate');
+    const stateActive = document.getElementById('pin-state-active');
+    const pinDisplay = document.getElementById('pin-display');
+
+    function generatePin() {
+      const pin = String(Math.floor(1000 + Math.random() * 9000));
+      localStorage.setItem('teacherGamePin', pin);
+      pinDisplay.textContent = pin;
+      stateGenerate.classList.add('hidden');
+      stateActive.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    generateBtn.addEventListener('click', generatePin);
+    regenerateBtn.addEventListener('click', generatePin);
+
+    // Restore existing PIN on load
+    const existingPin = localStorage.getItem('teacherGamePin');
+    if (existingPin) {
+      pinDisplay.textContent = existingPin;
+      stateGenerate.classList.add('hidden');
+      stateActive.classList.remove('hidden');
+    }
+  </script>
+</body>
+
+</html>

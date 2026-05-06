@@ -20,39 +20,12 @@
     <div class="bg-effect-2 animate-float"></div>
   </div>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="glass-strong nav-container">
-      <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
-        <a href="index.html" class="nav-logo group">
-          <i data-lucide="dices"></i>
-          <span>Dice & Discoveries</span>
-        </a>
-        <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
-          <i data-lucide="menu"></i>
-        </button>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link active">Home</a></li>
-        <li><a href="rules.html" class="nav-link">Rules</a></li>
-        <li>
-          <a href="journey.html" class="nav-link" data-protected="journey">
-            <i data-lucide="lock" class="w-3 h-3 lock-icon hidden" style="width: 12px;"></i> Journey
-          </a>
-        </li>
-        <li>
-          <a href="radar.html" class="nav-link" data-protected="radar">
-            <i data-lucide="lock" class="w-3 h-3 lock-icon hidden" style="width: 12px;"></i> Radar
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
+
+  <main style="padding-top: 0;">
 
     <!-- ════════════════════════════════════════════ -->
-    <!--  HERO SECTION                                -->
+    <!--  HERO / DASHBOARD SECTION                   -->
     <!-- ════════════════════════════════════════════ -->
     <section class="hero-section" id="hero">
       <!-- soft glow behind title -->
@@ -73,143 +46,38 @@
         </p>
 
         <p class="hero-desc animate-fade-in-up" style="animation-delay:.2s">
-          A physical STEM adventure where teams solve puzzles, face science bosses, and use radar to uncover the final geocache.
+          A physical STEM D&D-style adventure where teams solve puzzles, choose characters, face science bosses, and discover the final geocache.
         </p>
 
-        <div class="hero-actions animate-fade-in-up" style="animation-delay:.3s">
-          <button id="home-unlock-btn" class="btn btn-lg glow-md hover-glow-btn">
-            <i data-lucide="rocket" class="w-5 h-5"></i> Start Journey
-          </button>
-          <a href="rules.html" class="btn btn-lg btn-outline-cyan hover-glow-btn">
-            <i data-lucide="book-open" class="w-5 h-5"></i> View Rules
+        <!-- Dashboard Path Cards -->
+        <div class="dashboard-grid animate-fade-in-up" style="animation-delay:.35s">
+
+          <!-- Teacher Card -->
+          <a href="teacher.html" class="dashboard-card" id="card-teacher">
+            <div class="dashboard-card__icon-wrap">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <h2 class="dashboard-card__title">Teacher</h2>
+            <p class="dashboard-card__desc">Run the story, puzzles, and answers for the game session.</p>
+            <span class="dashboard-card__btn">
+              <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+              Enter Teacher Mode
+            </span>
           </a>
-        </div>
-      </div>
-    </section>
 
-    <!-- ════════════════════════════════════════════ -->
-    <!--  HOW IT WORKS                                -->
-    <!-- ════════════════════════════════════════════ -->
-    <section class="home-section" id="how-it-works">
-      <div class="home-container">
-        <h2 class="section-heading">How It <span class="text-primary text-glow">Works</span></h2>
+          <!-- Student Card -->
+          <a href="student-pin.html" class="dashboard-card" id="card-student">
+            <div class="dashboard-card__icon-wrap">
+              <i data-lucide="gamepad-2"></i>
+            </div>
+            <h2 class="dashboard-card__title">Student</h2>
+            <p class="dashboard-card__desc">Join the game, choose your character, and begin the adventure.</p>
+            <span class="dashboard-card__btn">
+              <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+              Join Game
+            </span>
+          </a>
 
-        <div class="card-grid card-grid--4">
-          <!-- Step 1 -->
-          <div class="home-card animate-fade-in-up">
-            <div class="home-card__icon-wrap">
-              <i data-lucide="users"></i>
-            </div>
-            <h3 class="home-card__title">Form Your Team</h3>
-            <p class="home-card__desc">Gather 2-4 players and prepare for a collaborative quest.</p>
-          </div>
-          <!-- Step 2 -->
-          <div class="home-card animate-fade-in-up" style="animation-delay:.1s">
-            <div class="home-card__icon-wrap">
-              <i data-lucide="user-cog"></i>
-            </div>
-            <h3 class="home-card__title">Choose Your Role</h3>
-            <p class="home-card__desc">Pick a STEM-based character with unique abilities.</p>
-          </div>
-          <!-- Step 3 -->
-          <div class="home-card animate-fade-in-up" style="animation-delay:.2s">
-            <div class="home-card__icon-wrap">
-              <i data-lucide="puzzle"></i>
-            </div>
-            <h3 class="home-card__title">Solve Challenges</h3>
-            <p class="home-card__desc">Defeat science bosses using logic and teamwork.</p>
-          </div>
-          <!-- Step 4 -->
-          <div class="home-card animate-fade-in-up" style="animation-delay:.3s">
-            <div class="home-card__icon-wrap">
-              <i data-lucide="navigation"></i>
-            </div>
-            <h3 class="home-card__title">Find the Cache</h3>
-            <p class="home-card__desc">Use radar tools to locate the hidden geocache.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════ -->
-    <!--  GAME FEATURES                               -->
-    <!-- ════════════════════════════════════════════ -->
-    <section class="home-section home-section--alt" id="game-features">
-      <div class="home-container">
-        <h2 class="section-heading">Game <span class="text-primary text-glow">Features</span></h2>
-
-        <div class="card-grid card-grid--3">
-          <!-- Feature 1 -->
-          <div class="home-card animate-fade-in-up">
-            <div class="home-card__icon-wrap">
-              <i data-lucide="flask-conical"></i>
-            </div>
-            <h3 class="home-card__title">Science-Based Challenges</h3>
-            <p class="home-card__desc">Apply real scientific principles to overcome obstacles and defeat complex bosses.</p>
-          </div>
-          <!-- Feature 2 -->
-          <div class="home-card animate-fade-in-up" style="animation-delay:.1s">
-            <div class="home-card__icon-wrap">
-              <i data-lucide="network"></i>
-            </div>
-            <h3 class="home-card__title">Team Collaboration</h3>
-            <p class="home-card__desc">Combine different roles and abilities to create powerful synergies.</p>
-          </div>
-          <!-- Feature 3 -->
-          <div class="home-card animate-fade-in-up" style="animation-delay:.2s">
-            <div class="home-card__icon-wrap">
-              <i data-lucide="map-pin"></i>
-            </div>
-            <h3 class="home-card__title">Real-World Exploration</h3>
-            <p class="home-card__desc">Navigate the real world using radar tools to locate hidden geocaches.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════ -->
-    <!--  CHARACTER SYSTEM                            -->
-    <!-- ════════════════════════════════════════════ -->
-    <section class="home-section" id="character-system">
-      <div class="home-container">
-        <h2 class="section-heading">Your <span class="text-primary text-glow">Character Matters</span></h2>
-        <p class="section-sub">
-          Each player receives a physical character card with a STEM role, background, trait, and ability.
-        </p>
-
-        <div class="card-grid card-grid--4">
-          <!-- Role -->
-          <div class="home-card home-card--sm animate-fade-in-up">
-            <div class="home-card__icon-wrap home-card__icon-wrap--sm">
-              <i data-lucide="shield"></i>
-            </div>
-            <h3 class="home-card__title">Role</h3>
-            <p class="home-card__desc">Your STEM discipline focus.</p>
-          </div>
-          <!-- Background -->
-          <div class="home-card home-card--sm animate-fade-in-up" style="animation-delay:.1s">
-            <div class="home-card__icon-wrap home-card__icon-wrap--sm">
-              <i data-lucide="scroll-text"></i>
-            </div>
-            <h3 class="home-card__title">Background</h3>
-            <p class="home-card__desc">Your character's origin story.</p>
-          </div>
-          <!-- Trait -->
-          <div class="home-card home-card--sm animate-fade-in-up" style="animation-delay:.2s">
-            <div class="home-card__icon-wrap home-card__icon-wrap--sm">
-              <i data-lucide="sparkles"></i>
-            </div>
-            <h3 class="home-card__title">Trait</h3>
-            <p class="home-card__desc">A unique personality perk.</p>
-          </div>
-          <!-- Ability -->
-          <div class="home-card home-card--sm animate-fade-in-up" style="animation-delay:.3s">
-            <div class="home-card__icon-wrap home-card__icon-wrap--sm">
-              <i data-lucide="zap"></i>
-            </div>
-            <h3 class="home-card__title">Ability</h3>
-            <p class="home-card__desc">A special power for challenges.</p>
-          </div>
         </div>
       </div>
     </section>
