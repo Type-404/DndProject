@@ -6,7 +6,6 @@ const characters = [
         hp: 19,
         ability: 'Energy Control',
         desc: 'Manipulates and stabilizes energy fields to solve high-risk physics challenges.',
-        color: 'var(--color-physicist)',
         img: 'images/physicst character.png'
     },
     {
@@ -16,7 +15,6 @@ const characters = [
         hp: 16,
         ability: 'Debug Mode',
         desc: 'Transforms code and logic into powerful tools to break systems and bypass security.',
-        color: 'var(--color-programmer)',
         img: 'images/programmer character.png'
     },
     {
@@ -26,7 +24,6 @@ const characters = [
         hp: 20,
         ability: 'Build Mode',
         desc: 'Constructs, repairs, and reinforces mechanical systems in real-time scenarios.',
-        color: 'var(--color-engineer)',
         img: 'images/engineer character.png'
     },
     {
@@ -36,7 +33,6 @@ const characters = [
         hp: 17,
         ability: 'Chain Reaction',
         desc: 'Combines chemical elements to trigger powerful reactions and control hazards.',
-        color: 'var(--color-chemist)',
         img: 'images/chemist character.png'
     },
     {
@@ -46,7 +42,6 @@ const characters = [
         hp: 18,
         ability: 'Quick Calculation',
         desc: 'Uses logic and rapid calculations to gain advantage in complex situations.',
-        color: 'var(--color-mathematician)',
         img: 'images/maths character.png'
     }
 ];
@@ -90,32 +85,29 @@ class App {
 
     init() {
         this.renderCharacters();
-        document.documentElement.style.setProperty('--accent-color', '#0ea5e9'); // default
     }
 
     renderCharacters() {
         const grid = document.getElementById('character-grid');
+        if (!grid) return;
         grid.innerHTML = '';
 
         characters.forEach(char => {
             const card = document.createElement('div');
-            card.className = 'card';
+            card.className = 'char-card';
             card.id = `char-card-${char.id}`;
-            card.style.setProperty('--accent-color', char.color);
             card.innerHTML = `
-                <div class="card-img-container">
-                    <img class="card-img" src="${char.img}" alt="${char.name}">
+                <div class="char-card__img-wrap">
+                    <img class="char-card__img" src="${char.img}" alt="${char.name}">
                 </div>
-                <div class="card-header">
-                    <div class="card-name">${char.name}</div>
-                    <div class="card-role" style="color: ${char.color}">${char.role}</div>
-                </div>
-                <div class="card-stats">
+                <div class="char-card__name">${char.name}</div>
+                <div class="char-card__role">${char.role}</div>
+                <div class="char-card__stats">
                     <div>HP: <span class="stat-val">${char.hp}</span></div>
-                    <div>Abil: <span class="stat-val" style="color: ${char.color}">${char.ability}</span></div>
+                    <div>Abil: <span class="stat-val">${char.ability}</span></div>
                 </div>
-                <div class="card-desc">${char.desc}</div>
-                <button class="btn btn-primary select-btn" onclick="event.stopPropagation(); app.selectCharacter('${char.id}')">Choose Character</button>
+                <div class="char-card__desc">${char.desc}</div>
+                <button class="char-card__select-btn" onclick="event.stopPropagation(); app.selectCharacter('${char.id}')">Choose Character</button>
             `;
             card.onclick = () => app.selectCharacter(char.id);
             grid.appendChild(card);
@@ -123,7 +115,7 @@ class App {
     }
 
     selectCharacter(id) {
-        document.querySelectorAll('#character-grid .card').forEach(c => c.classList.remove('selected'));
+        document.querySelectorAll('#character-grid .char-card').forEach(c => c.classList.remove('selected'));
         const selectedCard = document.getElementById(`char-card-${id}`);
         if (selectedCard) {
             selectedCard.classList.add('selected');
@@ -131,47 +123,53 @@ class App {
 
         this.gameState.character = characters.find(c => c.id === id);
         this.gameState.background = null;
-        document.documentElement.style.setProperty('--accent-color', this.gameState.character.color);
 
-        document.getElementById('character-selected-name').innerHTML = `<span class="label">CHARACTER:</span> <span class="value">${this.gameState.character.name}</span> <span class="divider">//</span> <span class="label">ROLE:</span> <span class="value">${this.gameState.character.role}</span>`;
-        document.getElementById('character-selected-name').style.color = ''; // Let CSS classes control the colors
+        const nameEl = document.getElementById('character-selected-name');
+        if (nameEl) {
+            nameEl.textContent = `${this.gameState.character.name}  //  ${this.gameState.character.role}`;
+        }
 
         this.renderBackgrounds();
 
         setTimeout(() => {
             this.switchScreen('screen-character', 'screen-background');
-        }, 800);
+        }, 600);
     }
 
     renderBackgrounds() {
         const grid = document.getElementById('background-grid');
+        if (!grid) return;
         grid.innerHTML = '';
         const options = backgroundsData[this.gameState.character.role];
 
-        document.getElementById('btn-confirm-background').disabled = true;
+        const confirmBtn = document.getElementById('btn-confirm-background');
+        if (confirmBtn) confirmBtn.disabled = true;
 
-        options.forEach((bg, index) => {
+        options.forEach((bg) => {
             const card = document.createElement('div');
-            card.className = 'card bg-card';
-            card.style.setProperty('--accent-color', this.gameState.character.color);
+            card.className = 'char-bg-card';
             card.innerHTML = `
-                <h3>${bg.title}</h3>
-                <div class="trait">TRAIT: ${bg.trait}</div>
-                <div class="ability">Bonus: ${bg.ability}</div>
-                <button class="btn btn-primary select-btn">SELECT</button>
+                <h3 class="char-bg-card__title">${bg.title}</h3>
+                <div class="char-bg-card__trait">Trait: ${bg.trait}</div>
+                <div class="char-bg-card__ability">Bonus: ${bg.ability}</div>
+                <button class="char-bg-card__btn">Select</button>
             `;
 
             card.onclick = () => this.selectBackground(card, bg);
             grid.appendChild(card);
         });
+
+        // Re-create lucide icons for any new elements
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
     selectBackground(cardElement, bgData) {
-        document.querySelectorAll('.bg-card').forEach(c => c.classList.remove('selected'));
+        document.querySelectorAll('.char-bg-card').forEach(c => c.classList.remove('selected'));
         cardElement.classList.add('selected');
 
         this.gameState.background = bgData;
-        document.getElementById('btn-confirm-background').disabled = false;
+        const confirmBtn = document.getElementById('btn-confirm-background');
+        if (confirmBtn) confirmBtn.disabled = false;
     }
 
     confirmBackground() {
@@ -182,37 +180,38 @@ class App {
 
     renderSummary() {
         const content = document.getElementById('summary-content');
+        if (!content) return;
         const char = this.gameState.character;
         const bg = this.gameState.background;
 
         content.innerHTML = `
-            <div class="summary-header">
-                <div class="summary-title">
+            <div class="char-summary-header">
+                <div class="char-summary-title">
                     <h2>${char.name}</h2>
-                    <p style="color: ${char.color}">${char.role}</p>
+                    <p>${char.role}</p>
                 </div>
-                <div class="summary-hp">
+                <div class="char-summary-hp">
                     ${char.hp} <span>HP</span>
                 </div>
             </div>
-            <div class="summary-details">
-                <div class="detail-section">
+            <div class="char-summary-details">
+                <div class="char-detail-section">
                     <h4>Core Ability</h4>
                     <p>${char.ability}</p>
                 </div>
-                <div class="detail-section">
+                <div class="char-detail-section">
                     <h4>Selected Background</h4>
                     <p>${bg.title}</p>
                 </div>
-                <div class="detail-section">
+                <div class="char-detail-section">
                     <h4>Character Trait</h4>
                     <p>${bg.trait}</p>
                 </div>
-                <div class="detail-section">
+                <div class="char-detail-section">
                     <h4>Background Bonus</h4>
                     <p>${bg.ability}</p>
                 </div>
-                <div class="detail-section story-section">
+                <div class="char-detail-section char-story-section">
                     <h4>Mission Briefing</h4>
                     <p>"${bg.story}"</p>
                 </div>
@@ -223,20 +222,17 @@ class App {
     switchScreen(fromId, toId) {
         const from = document.getElementById(fromId);
         const to = document.getElementById(toId);
-
-        const screens = ['screen-character', 'screen-background', 'screen-summary'];
-        const fromIndex = screens.indexOf(fromId);
-        const toIndex = screens.indexOf(toId);
-        const isForward = toIndex > fromIndex;
+        if (!from || !to) return;
 
         from.classList.remove('active');
-        from.classList.add(isForward ? 'slide-left' : 'slide-right');
 
         setTimeout(() => {
-            from.classList.remove('slide-left', 'slide-right');
-            to.classList.remove('slide-left', 'slide-right');
             to.classList.add('active');
-        }, 300);
+            // Re-create lucide icons for new screen
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 100);
     }
 
     goBack(targetScreen) {
@@ -246,14 +242,8 @@ class App {
     }
 
     startGame() {
-        const btn = document.querySelector('.pulse');
-        btn.innerHTML = 'LAUNCHING...';
-        btn.style.background = '#fca5a5';
-        setTimeout(() => {
-            alert('CORE-X PROTOCOL INITIATED! Get ready for Dice & Discoveries, ' + this.gameState.character.name + '!');
-            btn.innerHTML = 'START GAME!';
-            btn.style.background = '#ef4444';
-        }, 1000);
+        // Navigate to rules page
+        window.location.href = 'rules.html';
     }
 }
 

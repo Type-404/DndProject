@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle Guide — Dice & Discoveries</title>
+  <meta name="description" content="Puzzle guide for Dice & Discoveries teachers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-grid">
+  <div class="bg-effects-wrapper">
+    <div class="bg-effect-1 animate-pulse-glow"></div>
+    <div class="bg-effect-2 animate-float"></div>
+  </div>
+
+  <header>
+    <nav class="glass-strong nav-container">
+      <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
+        <a href="index.html" class="nav-logo group">
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
+        </a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="teacher.html" class="nav-link">Teacher</a></li>
+        <li><a href="story.html" class="nav-link">Story</a></li>
+        <li><a href="puzzle-guide.html" class="nav-link active">Puzzle Guide</a></li>
+        <li><a href="answers.html" class="nav-link">Answers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="home-container" style="max-width: 1000px;">
+      <div class="text-center animate-fade-in-up" style="margin-bottom: 2.5rem;">
+        <h1 class="text-4xl font-bold mb-4" style="font-size: clamp(2rem, 4vw, 2.75rem);">
+          Puzzle <span class="text-primary text-glow">Guide</span>
+        </h1>
+        <p class="text-muted" style="max-width: 500px; margin: 0 auto;">
+          Instructions and challenges for each dungeon room.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 1.5rem;"
+        class="animate-fade-in-up" style="animation-delay: .15s;">
+
+        <!-- Chemist Card -->
+        <div class="glass-strong"
+          style="border-radius: 1rem; padding: 2rem; border-color: rgba(0,229,255,0.2); display: flex; flex-direction: column;">
+          <h2
+            style="font-weight: 700; font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 1px;">
+            Chemist</h2>
+
+          <div style="margin-bottom: 1.5rem; flex: 1;">
+            <h3
+              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="puzzle" style="width: 18px; height: 18px; color: var(--primary);"></i> Puzzle
+            </h3>
+            <ul
+              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">A door created out of thick crystalline sugar. The door needs to be
+                dissolved in order to get through it.</li>
+              <li style="margin-bottom: 0.5rem;">If a natural 20 gets thrown, and the right item to dissolve it is used,
+                the door can immediately be dissolved.</li>
+              <li style="margin-bottom: 0.5rem;">Otherwise it will take multiple tries.</li>
+              <li>If the wrong item gets used, then the door will harden, taking longer to get through it.</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <h3
+              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="swords" style="width: 18px; height: 18px; color: var(--primary);"></i> Boss
+            </h3>
+            <ul
+              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">A Titan boss made out of a mixture of Sugar and salt. Just like the
+                door, it can be dissolved with water.</li>
+              <li style="margin-bottom: 0.5rem;">But if an attack is used that heats up the salt, then water can be
+                thrown to make it explode, this will defeat the boss but also has a chance to hurt players, but only if
+                they were to fail their dodge dice throw.</li>
+              <li style="margin-bottom: 0.5rem;">The boss can of course become stronger if the sugar were to be heated
+                up, turn into caramel, then cool down and harden.</li>
+              <li>It will only cool down after 2-3 turns in combat.</li>
+            </ul>
+          </div>
+
+          <div
+            style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-top: auto;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--foreground); margin-bottom: 0.25rem;">Teacher
+              Notes</h4>
+            <p style="font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.5;">This section helps the
+              teacher guide students through the puzzle and control the boss interaction during gameplay.</p>
+          </div>
+        </div>
+
+        <!-- Engineer Card -->
+        <div class="glass-strong"
+          style="border-radius: 1rem; padding: 2rem; border-color: rgba(0,229,255,0.2); display: flex; flex-direction: column;">
+          <h2
+            style="font-weight: 700; font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 1px;">
+            Engineer</h2>
+
+          <div style="margin-bottom: 1.5rem; flex: 1;">
+            <h3
+              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="puzzle" style="width: 18px; height: 18px; color: var(--primary);"></i> Puzzle
+            </h3>
+            <ul
+              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">An electrified floor grid, with water puddles on the floor.</li>
+              <li style="margin-bottom: 0.5rem;">The water puddles are electrified by a fuse box with loose wires, that
+                are touching the floor.</li>
+              <li style="margin-bottom: 0.5rem;">An engineer is the main solver, they can cut the wires and reconnect
+                them with a connect the wire minigame.</li>
+              <li>A programmer can turn off the power with code.</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <h3
+              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="swords" style="width: 18px; height: 18px; color: var(--primary);"></i> Boss
+            </h3>
+            <ul
+              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">An electrical metal entity, with an electric generator with a cpu
+                inside, the boss has multiple ways of being defeated.</li>
+              <li style="margin-bottom: 0.5rem;">The engineer can use a search check to find a suit that can withstand
+                electricity, to try and turn off the generator from the inside.</li>
+              <li style="margin-bottom: 0.5rem;">The programmer can connect to the boss to try and turn the generator
+                off with code.</li>
+              <li>Supporting roles like physicist boosted by mathematician can try and destroy the generator by a
+                well-thrown object.</li>
+            </ul>
+          </div>
+
+          <div
+            style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-top: auto;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--foreground); margin-bottom: 0.25rem;">Teacher
+              Notes</h4>
+            <p style="font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.5;">This section helps the
+              teacher guide students through the puzzle and control the boss interaction during gameplay.</p>
+          </div>
+        </div>
+
+        <!-- Mathematician Card -->
+        <div class="glass-strong"
+          style="border-radius: 1rem; padding: 2rem; border-color: rgba(0,229,255,0.2); display: flex; flex-direction: column;">
+          <h2
+            style="font-weight: 700; font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 1px;">
+            Mathematician</h2>
+
+          <div style="margin-bottom: 1.5rem; flex: 1;">
+            <h3
+              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="puzzle" style="width: 18px; height: 18px; color: var(--primary);"></i> Puzzle
+            </h3>
+            <ul
+              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">A pressure plate array that needs to be pressed in a specific order.
+              </li>
+              <li style="margin-bottom: 0.5rem;">If the order is guessed wrong 3 times, it resets to a different order.
+              </li>
+              <li>The mathematician can use inspect check to try and see which pressure plates have been pressed most.
+              </li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <h3
+              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="swords" style="width: 18px; height: 18px; color: var(--primary);"></i> Boss
+            </h3>
+            <ul
+              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">A self replicating geometry based intelligence which constantly shifts
+                geometric shapes.</li>
+              <li style="margin-bottom: 0.5rem;">It can split itself create smaller versions which can be a nuisance to
+                the players.</li>
+              <li style="margin-bottom: 0.5rem;">The mathematician can defeat it by identifying the pattern of what
+                shape it shifts to and predicting the next one thats coming.</li>
+              <li>Then using that info to decode pattern and stop the replication.</li>
+            </ul>
+          </div>
+
+          <div
+            style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-top: auto;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--foreground); margin-bottom: 0.25rem;">Teacher
+              Notes</h4>
+            <p style="font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.5;">This section helps the
+              teacher guide students through the puzzle and control the boss interaction during gameplay.</p>
+          </div>
+        </div>
+
+        <!-- Physicist Card -->
+        <div class="glass-strong"
+          style="border-radius: 1rem; padding: 2rem; border-color: rgba(0,229,255,0.2); display: flex; flex-direction: column;">
+          <h2
+            style="font-weight: 700; font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 1px;">
+            Physicist</h2>
+
+          <div style="margin-bottom: 1.5rem; flex: 1;">
+            <h3
+              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="puzzle" style="width: 18px; height: 18px; color: var(--primary);"></i> Puzzle
+            </h3>
+            <ul
+              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">The pathway is blocked by a room where a miniature black hole is held.
+              </li>
+              <li style="margin-bottom: 0.5rem;">The black hole started eating the items around it after its containment
+                chamber was breached.</li>
+              <li>The physicist needs to make the black hole spin faster, so that the hawking radiation makes it die out
+                faster, or needs to reseal the chamber, or reverse the gravitational field so that it turns into a white
+                hole, and dies out.</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <h3
+              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="swords" style="width: 18px; height: 18px; color: var(--primary);"></i> Boss
+            </h3>
+            <ul
+              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">A monstrous formation made out of radioactive waste with an unstable
+                miniature reactor in its body.</li>
+              <li style="margin-bottom: 0.5rem;">Getting too close will hurt any player and slowly drain their health.
+              </li>
+              <li style="margin-bottom: 0.5rem;">In order to defeat it, the Physicist needs to fend off the radiation
+                somehow, find a console connected to it to shut it down, throw sand onto it to try and smother the
+                reactor, stabilize it with control rods.</li>
+              <li>(Doing the wrong move could potentially make the radioactive output higher, dealing more damage, or
+                explode, causing major damage to all players.)</li>
+            </ul>
+          </div>
+
+          <div
+            style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-top: auto;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--foreground); margin-bottom: 0.25rem;">Teacher
+              Notes</h4>
+            <p style="font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.5;">This section helps the
+              teacher guide students through the puzzle and control the boss interaction during gameplay.</p>
+          </div>
+        </div>
+
+        <!-- Programmer Card -->
+        <div class="glass-strong"
+          style="border-radius: 1rem; padding: 2rem; border-color: rgba(0,229,255,0.2); display: flex; flex-direction: column;">
+          <h2
+            style="font-weight: 700; font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 1px;">
+            Programmer</h2>
+
+          <div style="margin-bottom: 1.5rem; flex: 1;">
+            <h3
+              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="puzzle" style="width: 18px; height: 18px; color: var(--primary);"></i> Puzzle
+            </h3>
+            <ul
+              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">Find a login for a terminal, then use the terminal to open a door.</li>
+              <li style="margin-bottom: 0.5rem;">There will also be a second door, and the players might think they will
+                need to use the terminal to use it.</li>
+              <li style="margin-bottom: 0.5rem;">Each player can throw a dice, whoever does an inspection check, will
+                see that the second door is already unlocked.</li>
+              <li>(The mini game will be to collect coins, once all coins have been found, the door will open/the puzzle
+                will be complete.)</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <h3
+              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i data-lucide="swords" style="width: 18px; height: 18px; color: var(--primary);"></i> Boss
+            </h3>
+            <ul
+              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">A dangerous virus that hides itself in the files of the main terminal
+                of the dungeon. The main terminal holds important data to find the geocache.</li>
+              <li style="margin-bottom: 0.5rem;">The virus keeps eating data and shifting forms, making it difficult to
+                track down or take out quickly.</li>
+              <li style="margin-bottom: 0.5rem;">Programmer class has multiple attack options: write counter-scripts,
+                delete corrupted processes, locate the root of the infection.</li>
+              <li>Bad dice throws can make bad scripts, possibly making the virus stronger, delete important files
+                instead of corrupted ones, or locating dummy root files instead of the actual root file.</li>
+            </ul>
+          </div>
+
+          <div
+            style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-top: auto;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--foreground); margin-bottom: 0.25rem;">Teacher
+              Notes</h4>
+            <p style="font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.5;">This section helps the
+              teacher guide students through the puzzle and control the boss interaction during gameplay.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center animate-fade-in-up" style="animation-delay: .25s; margin-top: 2.5rem;">
+        <a href="teacher.html" class="btn btn-outline-cyan" style="padding: 0.65rem 1.75rem;">
+          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Back to Dashboard
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
