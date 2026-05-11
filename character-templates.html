@@ -174,6 +174,60 @@
 
       </div>
 
+      <div class="text-center creator-subpage-header" style="margin-top: 3rem;">
+        <h2 class="creator-subpage-title">
+          Create Custom Character <span class="text-primary text-glow">Template</span>
+        </h2>
+        <p class="text-muted creator-subpage-intro">
+          Design your own character template and save it for future use.
+        </p>
+      </div>
+
+      <form id="custom-template-form" class="glass-strong" style="max-width: 600px; margin: 0 auto; padding: 2rem; border-radius: 1.25rem; border: 1px solid rgba(0, 229, 255, 0.22);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label for="char-name" class="text-sm font-semibold" style="display: block; margin-bottom: 0.5rem;">Character Name</label>
+            <input type="text" id="char-name" class="glass-strong" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(0, 229, 255, 0.22); background: rgba(4, 9, 20, 0.8); color: var(--foreground);">
+          </div>
+          <div>
+            <label for="char-role" class="text-sm font-semibold" style="display: block; margin-bottom: 0.5rem;">Role</label>
+            <input type="text" id="char-role" class="glass-strong" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(0, 229, 255, 0.22); background: rgba(4, 9, 20, 0.8); color: var(--foreground);">
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label for="char-hp" class="text-sm font-semibold" style="display: block; margin-bottom: 0.5rem;">HP</label>
+            <input type="number" id="char-hp" class="glass-strong" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(0, 229, 255, 0.22); background: rgba(4, 9, 20, 0.8); color: var(--foreground);">
+          </div>
+          <div>
+            <label for="char-ability" class="text-sm font-semibold" style="display: block; margin-bottom: 0.5rem;">Ability</label>
+            <input type="text" id="char-ability" class="glass-strong" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(0, 229, 255, 0.22); background: rgba(4, 9, 20, 0.8); color: var(--foreground);">
+          </div>
+          <div>
+            <label for="char-trait" class="text-sm font-semibold" style="display: block; margin-bottom: 0.5rem;">Trait</label>
+            <input type="text" id="char-trait" class="glass-strong" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(0, 229, 255, 0.22); background: rgba(4, 9, 20, 0.8); color: var(--foreground);">
+          </div>
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+          <label for="char-image" class="text-sm font-semibold" style="display: block; margin-bottom: 0.5rem;">Upload Image</label>
+          <input type="file" id="char-image" accept="image/*" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(0, 229, 255, 0.22); background: rgba(4, 9, 20, 0.8); color: var(--foreground);">
+        </div>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+          <button type="submit" class="btn btn-lg glow-md">
+            <i data-lucide="save" style="width: 18px; height: 18px;"></i>
+            Save Template
+          </button>
+          <button type="button" id="clear-form" class="btn btn-outline-cyan btn-lg">
+            <i data-lucide="trash" style="width: 18px; height: 18px;"></i>
+            Clear Form
+          </button>
+        </div>
+      </form>
+
+      <div id="custom-templates" class="template-card-grid" style="margin-top: 3rem;">
+        <!-- Custom templates will be inserted here -->
+      </div>
+
       <div class="text-center" style="margin-top: 2.5rem;">
         <a href="creator.html" class="btn btn-outline-cyan" style="padding: 0.75rem 1.75rem;">
           <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
@@ -185,6 +239,96 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('custom-template-form');
+      const clearBtn = document.getElementById('clear-form');
+      const customTemplatesContainer = document.getElementById('custom-templates');
+      const STORAGE_KEY = 'customCharacterTemplates';
+
+      // Load and render custom templates
+      function loadCustomTemplates() {
+        const templates = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        renderCustomTemplates(templates);
+      }
+
+      // Render custom templates
+      function renderCustomTemplates(templates) {
+        customTemplatesContainer.innerHTML = '';
+        templates.forEach((template, index) => {
+          const card = document.createElement('div');
+          card.className = 'glass-strong template-card';
+          card.innerHTML = `
+            <div class="template-card__preview">
+              <img src="${template.image}" class="template-preview-img" alt="${template.name} template">
+            </div>
+            <h2 class="template-card__title">${template.name}</h2>
+            <p class="template-card__desc">Role: ${template.role}<br>HP: ${template.hp}<br>Ability: ${template.ability}<br>Trait: ${template.trait}</p>
+            <div class="template-card__actions">
+              <a href="${template.image}" download="${template.name}-template.png" class="btn btn-lg glow-md w-full justify-center template-card__dl">
+                <i data-lucide="download" style="width: 18px; height: 18px;"></i>
+                Download
+              </a>
+              <button type="button" class="btn btn-outline-cyan btn-lg w-full justify-center delete-template" data-index="${index}">
+                <i data-lucide="trash" style="width: 18px; height: 18px;"></i>
+                Delete
+              </button>
+            </div>
+          `;
+          customTemplatesContainer.appendChild(card);
+        });
+        // Re-initialize Lucide icons for new elements
+        lucide.createIcons();
+      }
+
+      // Handle form submit
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('char-name').value.trim();
+        const role = document.getElementById('char-role').value.trim();
+        const hp = document.getElementById('char-hp').value.trim();
+        const ability = document.getElementById('char-ability').value.trim();
+        const trait = document.getElementById('char-trait').value.trim();
+        const imageFile = document.getElementById('char-image').files[0];
+
+        if (!name || !role || !hp || !ability || !trait || !imageFile) {
+          alert('Please fill all fields and upload an image.');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imageData = e.target.result;
+          const template = { name, role, hp, ability, trait, image: imageData };
+          const templates = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+          templates.push(template);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(templates));
+          loadCustomTemplates();
+          form.reset();
+        };
+        reader.readAsDataURL(imageFile);
+      });
+
+      // Handle clear form
+      clearBtn.addEventListener('click', function() {
+        form.reset();
+      });
+
+      // Handle delete
+      customTemplatesContainer.addEventListener('click', function(e) {
+        if (e.target.closest('.delete-template')) {
+          const index = e.target.closest('.delete-template').dataset.index;
+          const templates = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+          templates.splice(index, 1);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(templates));
+          loadCustomTemplates();
+        }
+      });
+
+      // Initial load
+      loadCustomTemplates();
+    });
+  </script>
 </body>
 
 </html>
