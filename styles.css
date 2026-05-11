@@ -1189,7 +1189,7 @@ main {
 
 .creator-import-map-card,
 .creator-map-creator-card {
-  cursor: default;
+  cursor: pointer;
 }
 
 .creator-import-map-label {
