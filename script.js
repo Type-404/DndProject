@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize Lucide icons
-  lucide.createIcons();
+  try {
+    if (typeof lucide !== "undefined") lucide.createIcons();
+  } catch (e) {
+    console.warn("Lucide icons failed:", e);
+  }
 
   // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -165,14 +169,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Map download: print preview with image only (new window) ---
-  const printMapBtn = document.getElementById('btn-print-map');
-  const mapPreviewImg = document.querySelector('.map-download-preview-img');
+  const printMapBtn = document.getElementById("btn-print-map");
+  const mapPreviewImg = document.getElementById("map-download-preview");
   if (printMapBtn && mapPreviewImg) {
-    printMapBtn.addEventListener('click', () => {
-      const src = mapPreviewImg.currentSrc || mapPreviewImg.getAttribute('src');
-      if (!src) return;
+    printMapBtn.addEventListener("click", () => {
+      const attrSrc = mapPreviewImg.getAttribute("src");
+      if (!attrSrc) return;
+      let src;
+      try {
+        src = new URL(attrSrc, document.baseURI).href;
+      } catch (e) {
+        src = mapPreviewImg.currentSrc || attrSrc;
+      }
 
-      const printWin = window.open('', '_blank', 'noopener,noreferrer');
+      const printWin = window.open("", "_blank", "noopener,noreferrer");
       if (!printWin) {
         window.alert('Please allow pop-ups for this site to print the map.');
         return;

@@ -1868,17 +1868,21 @@ main {
   padding: 1rem;
   border-color: rgba(0, 229, 255, 0.2);
   overflow: hidden;
+  min-height: 12rem;
 }
 
 .map-download-preview-img {
   display: block;
   width: 100%;
   height: auto;
+  max-height: 540px;
   max-height: min(72vh, 540px);
   object-fit: contain;
   margin: 0 auto;
   border-radius: 0.85rem;
   border: 1px solid rgba(0, 229, 255, 0.15);
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Character templates */

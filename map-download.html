@@ -40,8 +40,8 @@
   </header>
 
   <main>
-    <div class="creator-subpage-shell home-container animate-fade-in-up">
-      <div class="text-center creator-subpage-header map-download-no-print">
+    <div class="creator-subpage-shell home-container">
+      <div class="text-center creator-subpage-header map-download-no-print animate-fade-in-up">
         <h1 class="creator-subpage-title">
           Download <span class="text-primary text-glow">Map</span>
         </h1>
@@ -52,14 +52,17 @@
 
       <div class="map-download-preview-wrap glass-strong map-print-area">
         <img
+          id="map-download-preview"
           class="map-download-preview-img"
-          src="DND_STEM_MAP_72x101.png"
-          alt="Dice &amp; Discoveries dungeon map">
+          src="./DND_STEM_MAP_72x101.png"
+          alt="Dice and Discoveries dungeon map"
+          loading="eager"
+          decoding="async">
       </div>
 
-      <div class="creator-subpage-actions map-download-no-print">
+      <div class="creator-subpage-actions map-download-no-print animate-fade-in-up" style="animation-delay: 0.12s;">
         <a
-          href="DND_STEM_MAP_72x101.png"
+          href="./DND_STEM_MAP_72x101.png"
           download="dice-and-discoveries-map.png"
           class="btn btn-lg glow-md">
           <i data-lucide="download" style="width: 20px; height: 20px;"></i>
@@ -71,11 +74,11 @@
         </button>
       </div>
 
-      <p class="text-center text-muted text-sm map-download-no-print" style="margin-top: 1rem;">
+      <p class="text-center text-muted text-sm map-download-no-print animate-fade-in-up" style="margin-top: 1rem; animation-delay: 0.2s;">
         Print Map opens a print preview with only the map image (landscape often fits best for large maps).
       </p>
 
-      <div class="text-center map-download-no-print" style="margin-top: 2rem;">
+      <div class="text-center map-download-no-print animate-fade-in-up" style="margin-top: 2rem; animation-delay: 0.28s;">
         <a href="creator.html" class="btn btn-outline-cyan" style="padding: 0.75rem 1.75rem;">
           <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
           Back to Creator Tools
