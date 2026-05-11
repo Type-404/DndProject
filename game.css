@@ -441,8 +441,8 @@ body {
   position: absolute;
   width: 32px;
   height: 32px;
-  background: white; /* Will be replaced with css shape */
-  top: 14px; /* Cell padding 10px + 4px extra to center */
+  background: white; 
+  top: 14px;
   left: 14px;
   border-radius: 6px;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
@@ -466,15 +466,12 @@ body {
   box-shadow: 0 0 5px #fff;
 }
 
-/* Worker 2 distinct color */
 .worker-2 {
   background: linear-gradient(135deg, var(--accent-purple), #7e22ce);
   box-shadow: 0 0 15px rgba(192, 132, 252, 0.6);
 }
 
-/* Dynamic Rotations for the worker will be set via JS: transform: translate(X, Y) rotate(deg) */
 
-/* Store Modal */
 .modal {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
@@ -538,7 +535,7 @@ body {
   height: 28px;
   background: linear-gradient(135deg, var(--danger-red), #9f1239);
   border-radius: 4px;
-  top: 22px; /* 10px pad, 2px gap, offset +6 from left for 28px vs 40px cell */
+  top: 22px;
   left: 22px;
   box-shadow: 0 0 15px rgba(251, 113, 133, 0.6);
   z-index: 5;

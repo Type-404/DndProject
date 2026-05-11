@@ -1,4 +1,3 @@
-// Game & Grid Configuration
 const CELL_SIZE = 40;
 const GAP = 2;
 const PADDING = 10;
@@ -6,7 +5,6 @@ const WORKER_OFFSET = PADDING + (CELL_SIZE - 32) / 2; // = 14
 const PATROL_OFFSET = PADDING + (CELL_SIZE - 28) / 2; // = 16
 const STEP_MS = 300; // Animation / Tick speed
 
-// --- BACK BUTTON FUNCTIONALITY ---
 document.addEventListener('DOMContentLoaded', function() {
   const backButton = document.getElementById('back-button');
   if (backButton) {
@@ -15,13 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Initialize Lucide icons
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
 });
 
-// Directions: 0: North, 1: East, 2: South, 3: West
 const DIR = { N: 0, E: 1, S: 2, W: 3 };
 const VECTORS = [
   { x: 0, y: -1 }, // N
@@ -30,11 +26,9 @@ const VECTORS = [
   { x: -1, y: 0 }  // W
 ];
 
-// Tile Types
 const TILE = { EMPTY: 0, WALL: 1, BIN: 2, COIN_SOURCE: 3 };
 
-// --- PROGRESSION & STORE ---
-let globalWalletCoins = 0; // Persistent between runs
+let globalWalletCoins = 100;
 
 const STORE_ITEMS = [
   { id: 'cmd_turnLeft', type: 'cmd', name: 'TurnLeft()', cost: 1, purchased: false, desc: 'Allows you to turn counter-clockwise without moving.', demo: "MoveForward();\nTurnLeft(); // Worker rotates 90 degrees CCW\nMoveForward();" },
@@ -46,6 +40,8 @@ const STORE_ITEMS = [
   { id: 'stg_4', type: 'stage', name: 'Stage 04: The Guards', cost: 10, purchased: false, desc: 'Unlocks the 4th stage.', unlockStage: 4 },
   { id: 'stg_5', type: 'stage', name: 'Stage 05: The Factory', cost: 15, purchased: false, desc: 'Unlocks the 5th stage.', unlockStage: 5 },
   { id: 'stg_6', type: 'stage', name: 'Stage 06: Co-op Protocol', cost: 20, purchased: false, desc: 'Unlocks the 6th stage.', unlockStage: 6 },
+  { id: 'Code_1', type: 'key', name: 'Keycode door 1', cost: 30, purchased: false, desc: 'Unlocks the first door.', demo: "The keycode for the first door is 6453." },
+  { id: 'Code_2', type: 'key', name: 'Keycode door 2', cost: 40, purchased: false, desc: 'Unlocks the second door.', demo: "The keycode for the second door is 9321." }
 ];
 
 function isCommandUnlocked(cmdId) {
@@ -58,7 +54,6 @@ function isCommandUnlocked(cmdId) {
   return false;
 }
 
-// --- LEVELS ---
 const LEVELS = {
   1: {
     goalCoins: 1,
@@ -108,7 +103,7 @@ const LEVELS = {
     grid: [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 2, 0, 0, 0, 0, 0, 0, 3, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 3, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ],
@@ -159,9 +154,8 @@ let currentLevel = 1;
 let isRunning = false;
 let stopRequested = false;
 
-// Game State
 let state = {
-  workers: [], // Array of {x, y, dir, inventory, el}
+  workers: [], 
   stageCoins: 0,
   goal: 0,
   grid: [],
@@ -169,7 +163,6 @@ let state = {
   patrols: []
 };
 
-// DOM Elements
 const elGridView = document.getElementById('grid-view');
 const elWalletCoins = document.getElementById('wallet-coins');
 const elStageCoins = document.getElementById('stage-coins');
@@ -182,13 +175,11 @@ const levelPicker = document.getElementById('level-picker');
 const btnLoadLevel = document.getElementById('btn-load-level');
 const codeEditor = document.getElementById('code-editor');
 
-// Store DOM Elements
 const storeModal = document.getElementById('store-modal');
 const btnStore = document.getElementById('btn-store');
 const btnCloseStore = document.getElementById('btn-close-store');
 const storeItemsList = document.getElementById('store-items-list');
 
-// Demo Modal DOM Elements
 const demoModal = document.getElementById('demo-modal');
 const demoTitle = document.getElementById('demo-title');
 const demoDesc = document.getElementById('demo-desc');
@@ -198,7 +189,6 @@ const btnCloseDemo = document.getElementById('btn-close-demo');
 let coinElements = [];
 let patrolElements = [];
 
-// Logger
 function log(msg, type = "info") {
   const line = document.createElement("div");
   line.className = `console-line ${type}`;
@@ -207,7 +197,6 @@ function log(msg, type = "info") {
   elConsole.scrollTop = elConsole.scrollHeight;
 }
 
-// Initializing Level
 function loadLevel(levelId) {
   stopScript();
   const lvl = LEVELS[levelId];
@@ -230,7 +219,6 @@ function loadLevel(levelId) {
   renderGrid();
 }
 
-// Renderer
 function renderGrid() {
   elGridView.innerHTML = "";
   coinElements = [];
@@ -256,7 +244,6 @@ function renderGrid() {
     }
   }
 
-  // Draw Coins
   state.coins.forEach((c) => {
     const cEl = document.createElement("div");
     cEl.className = "entity-coin";
@@ -267,7 +254,6 @@ function renderGrid() {
     coinElements.push(cEl);
   });
 
-  // Draw Patrols
   state.patrols.forEach((p) => {
     const pEl = document.createElement("div");
     pEl.className = "entity-patrol";
@@ -277,7 +263,6 @@ function renderGrid() {
   });
   updatePatrolsDOM();
 
-  // Draw Workers
   state.workers.forEach((w, i) => {
     const wEl = document.createElement("div");
     wEl.className = "worker";
@@ -313,7 +298,6 @@ function updateUIStats() {
   state.workers.forEach(w => totalInv += w.inventory);
   elWorkerInv.textContent = totalInv;
 
-  // Also update UI availability in level picker based on store
   STORE_ITEMS.filter(i => i.type === 'stage').forEach(item => {
     const opt = levelPicker.querySelector(`option[value="${item.unlockStage}"]`);
     if (opt) {
@@ -328,7 +312,6 @@ function updateUIStats() {
   });
 }
 
-// Tick updating logic for Entities
 async function runEntityTick() {
   let collision = false;
   state.patrols.forEach(p => {
@@ -340,14 +323,12 @@ async function runEntityTick() {
       if (p.y >= p.maxY || p.y <= p.minY) p.dir *= -1;
     }
 
-    // Check collision post-move
     state.workers.forEach(w => {
       if (p.x === w.x && p.y === w.y) collision = true;
     });
   });
   updatePatrolsDOM();
 
-  // also check if worker stepped into a patrol
   state.patrols.forEach(p => {
     state.workers.forEach(w => {
       if (p.x === w.x && p.y === w.y) collision = true;
@@ -360,7 +341,6 @@ async function runEntityTick() {
   }
 }
 
-// Hooks implementation for code runner
 const pause = (ms) => new Promise(res => setTimeout(res, ms));
 
 async function yieldTick() {
@@ -446,7 +426,6 @@ async function apiDoNothing() {
 }
 
 async function checkTileInteractions() {
-  // Check coins
   state.workers.forEach(w => {
     for (let i = 0; i < state.coins.length; i++) {
       const c = state.coins[i];
@@ -459,13 +438,12 @@ async function checkTileInteractions() {
       }
     }
 
-    // Check Bin
     if (state.grid[w.y][w.x] === TILE.BIN) {
       if (w.inventory > 0) {
         const added = w.inventory;
         log(`Deposited ${added} coins!`, "info");
         state.stageCoins += added;
-        globalWalletCoins += added; // Immediately persists to wallet
+        globalWalletCoins += added; 
         w.inventory = 0;
         updateUIStats();
         checkWinCondition();
@@ -473,7 +451,6 @@ async function checkTileInteractions() {
     }
   });
 
-  // Respawn Mechanics (Level 3 or 5)
   if (LEVELS[currentLevel].respawns) {
     let sourceOccupied = false;
     state.workers.forEach(w => {
@@ -500,10 +477,9 @@ function checkWinCondition() {
   }
 }
 
-// Script Transpiler
 function runScript() {
   if (isRunning) return;
-  loadLevel(currentLevel); // Make sure stages must be finished in one go
+  loadLevel(currentLevel); 
 
   isRunning = true;
   stopRequested = false;
@@ -513,7 +489,6 @@ function runScript() {
 
   let rawCode = codeEditor.value;
 
-  // Transpile loops. First check if looping is unlocked.
   if (rawCode.includes('while') || rawCode.includes('for')) {
     if (!isCommandUnlocked('while')) {
       log("Syntax Error: Loop commands are locked! Buy them in the Store.", "error");
@@ -524,14 +499,11 @@ function runScript() {
 
   rawCode = rawCode.replace(/((?:while|for)\s*\([^)]+\)\s*\{)/g, `$1 await yieldTick(); `);
 
-  // Await the async API calls and check unlocks
   const apiMethods = ['MoveForward', 'MoveBackwards', 'TurnRight', 'TurnLeft', 'DoNothing', 'IsWallAhead'];
   let processedCode = rawCode;
   let accessDenied = false;
 
   apiMethods.forEach(method => {
-    // 1. Process Global legacy commands -> defaults to worker1.Method()
-    // Using negative lookbehind to ensure there's no dot before the method name.
     let reGlobal = new RegExp(`(?<!\\.)\\b${method}\\s*\\(`, 'g');
     if (reGlobal.test(processedCode) && !isCommandUnlocked(method)) {
       log(`Syntax Error: ${method}() is locked! Buy it in the Store.`, "error");
@@ -539,7 +511,6 @@ function runScript() {
     }
     processedCode = processedCode.replace(reGlobal, `await worker1.${method}(`);
 
-    // 2. Process specific Worker instance commands string worker1.MoveForward() -> await worker1.MoveForward()
     let reObj = new RegExp(`\\b(worker[1-9])\\.${method}\\s*\\(`, 'g');
     if (reObj.test(processedCode) && !isCommandUnlocked(method)) {
       log(`Syntax Error: ${method}() is locked! Buy it in the Store.`, "error");
@@ -553,9 +524,7 @@ function runScript() {
     return;
   }
 
-  // Handle Synchronous commands manually if needed, such as ConsoleLog
   processedCode = processedCode.replace(/(?<!\.)\bConsoleLog\s*\(/g, `__engine.ConsoleLog(`);
-  // Also support worker1.ConsoleLog just in case
   processedCode = processedCode.replace(/\bworker[1-9]\.ConsoleLog\s*\(/g, `__engine.ConsoleLog(`);
 
   processedCode = processedCode.replace(/(?<!\.)\bGetWorkerInventoryItems\s*\(\)/g, `worker1.GetWorkerInventoryItems()`);
@@ -580,7 +549,6 @@ function runScript() {
     })();
   `;
 
-  // Provide factory for isolated worker APIs so we can pass Worker1 and Worker2 easily
   const createWorkerAPI = (index) => ({
     MoveForward: () => apiMoveForward(index),
     MoveBackwards: () => apiMoveBackwards(index),
@@ -592,7 +560,7 @@ function runScript() {
   });
 
   const worker1 = createWorkerAPI(0);
-  const worker2 = state.workers.length > 1 ? createWorkerAPI(1) : createWorkerAPI(0); // Safely fallback if missing mapping
+  const worker2 = state.workers.length > 1 ? createWorkerAPI(1) : createWorkerAPI(0);
   const worker3 = state.workers.length > 2 ? createWorkerAPI(2) : createWorkerAPI(0);
 
   const __engine = {
@@ -628,7 +596,6 @@ function stopScript() {
   stopRequested = true;
 }
 
-// Store System logic
 function renderStore() {
   storeItemsList.innerHTML = "";
   STORE_ITEMS.forEach(item => {
@@ -642,16 +609,23 @@ function renderStore() {
     const action = document.createElement('div');
     const b = document.createElement('button');
     b.className = 'btn primary';
+
     if (item.purchased) {
-      b.textContent = 'Owned';
-      b.disabled = true;
+      if (item.type === 'cmd') {
+        b.textContent = 'Demo';
+        b.disabled = false; // Enable the button
+        b.onclick = () => showDemoModal(item);
+      } else {
+        b.textContent = 'Owned';
+        b.disabled = true;
+      }
     } else {
       b.textContent = `${item.cost} Coins`;
-      if (globalWalletCoins < item.cost) b.disabled = true;
+      b.disabled = globalWalletCoins < item.cost;
       b.onclick = () => buyItem(item.id);
     }
-    action.appendChild(b);
 
+    action.appendChild(b);
     el.appendChild(info);
     el.appendChild(action);
     storeItemsList.appendChild(el);
@@ -663,6 +637,11 @@ function buyItem(id) {
   if (item && globalWalletCoins >= item.cost && !item.purchased) {
     globalWalletCoins -= item.cost;
     item.purchased = true;
+
+
+    if (item.type === 'key') {
+      item.desc = `DECRYPTED: ${item.demo}`;
+    }
     updateUIStats();
     renderStore();
     log(`Purchased: ${item.name}`, "info");
@@ -680,7 +659,6 @@ function showDemoModal(item) {
   demoModal.classList.remove('hidden');
 }
 
-// Event Listeners
 btnRun.addEventListener("click", runScript);
 btnStop.addEventListener("click", stopScript);
 btnLoadLevel.addEventListener("click", () => {
