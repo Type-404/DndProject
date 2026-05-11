@@ -533,6 +533,34 @@ document.addEventListener("DOMContentLoaded", () => {
     return resolvedSrc;
   }
 
+  const CUSTOM_MAP_DATA_KEY = "questAcademy_customMapImageDataUrl";
+  const CUSTOM_MAP_NAME_KEY = "questAcademy_customMapDownloadName";
+  const PROGRAMMING_PUZZLE_ACCESS = "programming";
+
+  function applyMapDownloadCustomPreview() {
+    const img = document.getElementById("map-download-preview");
+    const dl = document.getElementById("map-download-anchor");
+    if (!img) return;
+    try {
+      const dataUrl = localStorage.getItem(CUSTOM_MAP_DATA_KEY);
+      if (dataUrl && typeof dataUrl === "string" && dataUrl.startsWith("data:image/")) {
+        img.src = dataUrl;
+        img.alt = "Your imported custom map";
+        img.removeAttribute("width");
+        img.removeAttribute("height");
+        if (dl) {
+          dl.href = dataUrl;
+          const fname = localStorage.getItem(CUSTOM_MAP_NAME_KEY);
+          if (fname) dl.setAttribute("download", fname);
+        }
+      }
+    } catch (_) {
+      /* ignore */
+    }
+  }
+
+  applyMapDownloadCustomPreview();
+
   // --- Map download: print preview with image only (new window) ---
   const printMapBtn = document.getElementById("btn-print-map");
   const mapPreviewImg = document.getElementById("map-download-preview");
@@ -632,5 +660,115 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 8000);
     });
   }
+
+
+  const importMapInput = document.getElementById("creator-import-map-input");
+  const importMapPreview = document.getElementById("creator-import-map-preview");
+  if (importMapInput && importMapPreview) {
+    importMapInput.addEventListener("change", () => {
+      const file = importMapInput.files && importMapInput.files[0];
+      if (!file || !file.type.startsWith("image/")) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = reader.result;
+        if (typeof dataUrl !== "string") return;
+        try {
+          localStorage.setItem(CUSTOM_MAP_DATA_KEY, dataUrl);
+          localStorage.setItem(
+            CUSTOM_MAP_NAME_KEY,
+            file.name.replace(/[^\w.\-]+/g, "_") || "custom-map.png"
+          );
+        } catch (err) {
+          window.alert(
+            "Could not store this image in the browser. Try a smaller file, or clear old site data."
+          );
+          return;
+        }
+        importMapPreview.innerHTML = "";
+        const im = document.createElement("img");
+        im.src = dataUrl;
+        im.alt = "Imported map preview";
+        im.className = "creator-import-map-preview__img";
+        importMapPreview.appendChild(im);
+        try {
+          if (typeof lucide !== "undefined") lucide.createIcons();
+        } catch (_) {
+          /* ignore */
+        }
+      };
+      reader.readAsDataURL(file);
+      importMapInput.value = "";
+    });
+  }
+
+  const studentDashEmpty = document.getElementById("student-dash-empty");
+  const studentDashMain = document.getElementById("student-dash-main");
+  const studentDashPuzzleCard = document.getElementById("student-dash-puzzle-card");
+  if (studentDashEmpty && studentDashMain && studentDashPuzzleCard) {
+    let party = null;
+    try {
+      party = JSON.parse(localStorage.getItem("questAcademy_studentParty") || "null");
+    } catch (_) {
+      party = null;
+    }
+    if (!party || !party.character || !party.background) {
+      studentDashEmpty.classList.remove("hidden");
+    } else {
+      studentDashMain.classList.remove("hidden");
+      const c = party.character;
+      const b = party.background;
+      const imgEl = document.getElementById("student-dash-char-img");
+      if (imgEl) {
+        imgEl.src = c.img || "";
+        imgEl.alt = c.name || "Character";
+      }
+      const nameEl = document.getElementById("student-dash-char-name");
+      if (nameEl) nameEl.textContent = c.name || "";
+      const roleEl = document.getElementById("student-dash-char-role");
+      if (roleEl) roleEl.textContent = c.role || "";
+      const bgTitle = document.getElementById("student-dash-bg-title");
+      if (bgTitle) bgTitle.textContent = b.title || "";
+      const bgTrait = document.getElementById("student-dash-bg-trait");
+      if (bgTrait) bgTrait.textContent = b.trait || "—";
+      const bgBonus = document.getElementById("student-dash-bg-bonus");
+      if (bgBonus) bgBonus.textContent = b.ability || "—";
+
+      if (c.role === "Programmer") {
+        studentDashPuzzleCard.classList.remove("hidden");
+
+        const puzzleForm = document.getElementById("puzzle-access-form");
+        const puzzleInput = document.getElementById("puzzle-access-input");
+        const puzzleError = document.getElementById("puzzle-access-error");
+
+        if (puzzleForm && puzzleInput) {
+          puzzleForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            window.location.href = "game.html";
+          });
+        }
+      }
+    }
+    try {
+      if (typeof lucide !== "undefined") lucide.createIcons();
+    } catch (_) {
+      /* ignore */
+    }
+  }
+
+  document.querySelectorAll(".student-dash-btn-back").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const fallback = btn.getAttribute("data-fallback") || "character.html";
+      try {
+        const ref = document.referrer;
+        if (ref && new URL(ref).origin === window.location.origin) {
+          window.history.back();
+          return;
+        }
+      } catch (_) {
+        /* ignore */
+      }
+      window.location.href = fallback;
+    });
+  });
 
 });

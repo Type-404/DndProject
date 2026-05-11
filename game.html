@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Outcore - Coin Collector</title>
+  <title>Programming Puzzle — Dice & Discoveries</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="game.css">
   <link
@@ -14,6 +14,20 @@
 </head>
 
 <body>
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem("questAcademy_studentParty");
+        var party = raw ? JSON.parse(raw) : null;
+        var role = party && party.character && party.character.role;
+        if (role !== "Programmer") {
+          window.location.replace(party && party.character ? "role-overview.html" : "character.html");
+        }
+      } catch (e) {
+        window.location.replace("character.html");
+      }
+    })();
+  </script>
 
   <!-- Main Navbar -->
   <header>
@@ -31,11 +45,10 @@
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="rules.html" class="nav-link">Rules</a></li>
         <li>
-          <a href="game.html" class="nav-link active">
-            <i data-lucide="gamepad-2" style="width: 16px; height: 16px;"></i> Game
+          <a href="radar.html" class="nav-link" data-protected="radar">
+            <i data-lucide="lock" class="w-3 h-3 lock-icon hidden" style="width: 12px;"></i> Radar
           </a>
         </li>
-        <li><a href="radar.html" class="nav-link">Radar</a></li>
       </ul>
     </nav>
   </header>
@@ -52,8 +65,8 @@
     <!-- Header with UI Info -->
     <div id="top-bar">
       <div class="logo">
-        <h1>Puzzel</h1>
-        <span class="subtitle">Worker Control Terminal v0.9.3</span>
+        <h1>Programming Puzzle</h1>
+        <span class="subtitle">Worker Control Terminal — code challenge module</span>
       </div>
       <div class="level-select">
         <button id="btn-store" class="btn secondary">🛒 STORE</button>
@@ -171,6 +184,7 @@ MoveForward();
     </div>
   </div>
 
+  <script src="script.js"></script>
   <script src="game.js"></script>
 </body>
 

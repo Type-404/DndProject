@@ -87,6 +87,33 @@
           </span>
         </a>
 
+        <div class="dashboard-card creator-map-creator-card">
+          <div class="dashboard-card__icon-wrap creator-card-icon-wrap">
+            <i data-lucide="map-pinned" style="width:32px;height:32px;"></i>
+          </div>
+          <h2 class="dashboard-card__title">Map Creator</h2>
+          <p class="dashboard-card__desc">Open map creator tool to design or edit a custom dungeon map.</p>
+          <a href="https://app.dungeonscrawl.com/" target="_blank" rel="noopener noreferrer" class="dashboard-card__btn" id="creator-map-creator-link">
+            <i data-lucide="external-link" style="width:18px;height:18px;"></i>
+            Open Map Creator
+          </a>
+        </div>
+
+        <div class="dashboard-card creator-import-map-card" style="cursor: default;">
+          <div class="dashboard-card__icon-wrap creator-card-icon-wrap">
+            <i data-lucide="upload" style="width:32px;height:32px;"></i>
+          </div>
+          <h2 class="dashboard-card__title">Import Custom Map</h2>
+          <p class="dashboard-card__desc">Upload an image to use as your dungeon map on the Download Map page. Stored only in this browser.</p>
+          <label class="btn btn-outline-cyan creator-import-map-label">
+            <i data-lucide="image-plus" style="width:18px;height:18px;"></i>
+            Choose image
+            <input type="file" id="creator-import-map-input" class="creator-import-map-input" accept="image/*" hidden>
+          </label>
+          <p class="text-muted text-sm" style="margin-top: 1rem; line-height: 1.5;">Imported maps are stored locally in this browser.</p>
+          <div id="creator-import-map-preview" class="creator-import-map-preview"></div>
+        </div>
+
       </div>
 
       <div class="text-center" style="margin-top: 3rem;">
@@ -99,17 +126,7 @@
   </main>
 
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script>
-    lucide.createIcons();
-
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    if (mobileMenuBtn && navLinks) {
-      mobileMenuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('nav-open');
-      });
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
