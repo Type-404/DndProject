@@ -190,10 +190,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const doc = printWin.document;
       doc.open();
-      doc.write('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Print map</title>');
-      doc.write('<style>html,body{margin:0;padding:0;background:#fff}img{display:block;width:100%;max-width:100%;height:auto}@media print{img{page-break-inside:avoid}}</style>');
-      doc.write('</head><body></body></html>');
+      doc.write('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Print map</title></head><body></body></html>');
       doc.close();
+
+      const style = doc.createElement('style');
+      style.textContent =
+        'html,body{margin:0;padding:0;background:#fff}img{display:block;width:100%;max-width:100%;height:auto}@media print{img{page-break-inside:avoid}}';
+      doc.head.appendChild(style);
 
       const img = doc.createElement('img');
       img.alt = mapPreviewImg.getAttribute('alt') || 'Map';
