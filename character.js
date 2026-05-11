@@ -85,6 +85,28 @@ class App {
 
     init() {
         this.renderCharacters();
+        this.wireStartGameSave();
+    }
+
+    wireStartGameSave() {
+        const startBtn = document.getElementById("btn-start-game");
+        if (!startBtn) return;
+        startBtn.addEventListener("click", () => {
+            if (this.gameState.character && this.gameState.background) {
+                try {
+                    localStorage.setItem(
+                        "questAcademy_studentParty",
+                        JSON.stringify({
+                            character: this.gameState.character,
+                            background: this.gameState.background,
+                            savedAt: Date.now(),
+                        })
+                    );
+                } catch (e) {
+                    console.warn("Could not save party to localStorage:", e);
+                }
+            }
+        });
     }
 
     renderCharacters() {
