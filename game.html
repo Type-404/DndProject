@@ -5,17 +5,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Outcore - Coin Collector</title>
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="game.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;900&display=swap"
     rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 
 <body>
 
+  <!-- Main Navbar -->
+  <header>
+    <nav class="glass-strong nav-container">
+      <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
+        <a href="index.html" class="nav-logo group">
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
+        </a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="rules.html" class="nav-link">Rules</a></li>
+        <li>
+          <a href="game.html" class="nav-link active">
+            <i data-lucide="gamepad-2" style="width: 16px; height: 16px;"></i> Game
+          </a>
+        </li>
+        <li><a href="radar.html" class="nav-link">Radar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Back Button -->
+  <div id="back-button-container">
+    <a id="back-button" class="back-btn" href="rules.html">
+      <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+      Back
+    </a>
+  </div>
+
   <div id="game-container">
     <!-- Header with UI Info -->
-    <header id="top-bar">
+    <div id="top-bar">
       <div class="logo">
         <h1>Puzzel</h1>
         <span class="subtitle">Worker Control Terminal v0.9.3</span>
@@ -47,7 +82,7 @@
           <span class="value" id="worker-inv">0</span>
         </div>
       </div>
-    </header>
+    </div>
 
     <div id="main-content">
       <!-- Code Editor Panel -->

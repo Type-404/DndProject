@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Puzzle Guide — Dice & Discoveries</title>
-  <meta name="description" content="Puzzle guide for Dice & Discoveries teachers.">
+  <title>Puzzles — Dice & Discoveries</title>
+  <meta name="description" content="Puzzles and challenges for Dice & Discoveries teachers.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -33,8 +33,7 @@
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="teacher.html" class="nav-link">Teacher</a></li>
         <li><a href="story.html" class="nav-link">Story</a></li>
-        <li><a href="puzzle-guide.html" class="nav-link active">Puzzle Guide</a></li>
-        <li><a href="answers.html" class="nav-link">Answers</a></li>
+        <li><a href="puzzle-guide.html" class="nav-link active">Puzzles</a></li>
       </ul>
     </nav>
   </header>
@@ -43,7 +42,7 @@
     <div class="home-container" style="max-width: 1000px;">
       <div class="text-center animate-fade-in-up" style="margin-bottom: 2.5rem;">
         <h1 class="text-4xl font-bold mb-4" style="font-size: clamp(2rem, 4vw, 2.75rem);">
-          Puzzle <span class="text-primary text-glow">Guide</span>
+          <span class="text-primary text-glow">Puzzles</span>
         </h1>
         <p class="text-muted" style="max-width: 500px; margin: 0 auto;">
           Instructions and challenges for each dungeon room.
@@ -76,30 +75,25 @@
             </ul>
           </div>
 
-          <div style="margin-bottom: 2rem;">
-            <h3
-              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
-              <i data-lucide="swords" style="width: 18px; height: 18px; color: var(--primary);"></i> Boss
-            </h3>
-            <ul
-              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
-              <li style="margin-bottom: 0.5rem;">A Titan boss made out of a mixture of Sugar and salt. Just like the
-                door, it can be dissolved with water.</li>
-              <li style="margin-bottom: 0.5rem;">But if an attack is used that heats up the salt, then water can be
-                thrown to make it explode, this will defeat the boss but also has a chance to hurt players, but only if
-                they were to fail their dodge dice throw.</li>
-              <li style="margin-bottom: 0.5rem;">The boss can of course become stronger if the sugar were to be heated
-                up, turn into caramel, then cool down and harden.</li>
-              <li>It will only cool down after 2-3 turns in combat.</li>
-            </ul>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: auto;">
+            <button class="answer-toggle-btn" data-role="chemist" style="flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: var(--primary); border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+              <i data-lucide="eye" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>
+              Show Answer
+            </button>
+            <button class="evolution-toggle-btn" data-role="chemist" style="flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: var(--primary); border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+              <i data-lucide="zap" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>
+              Show Evolution
+            </button>
           </div>
 
-          <div
-            style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-top: auto;">
-            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--foreground); margin-bottom: 0.25rem;">Teacher
-              Notes</h4>
-            <p style="font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.5;">This section helps the
-              teacher guide students through the puzzle and control the boss interaction during gameplay.</p>
+          <div class="answer-reveal" data-role="chemist" style="display: none; margin-top: 1.5rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.25); padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;">Answer</h4>
+            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">Roll <strong style="color: var(--foreground);">14 or above</strong> and use <strong style="color: var(--foreground);">acidic potion</strong> or <strong style="color: var(--foreground);">chemical reaction + water</strong> to dissolve the door.</p>
+          </div>
+
+          <div class="evolution-reveal" data-role="chemist" style="display: none; margin-top: 1.5rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.25); padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;">Evolution</h4>
+            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">Heat alone turns the door into caramel. If players fail for 3+ more turns, it hardens and requires a different reaction.</p>
           </div>
         </div>
 
@@ -126,30 +120,25 @@
             </ul>
           </div>
 
-          <div style="margin-bottom: 2rem;">
-            <h3
-              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
-              <i data-lucide="swords" style="width: 18px; height: 18px; color: var(--primary);"></i> Boss
-            </h3>
-            <ul
-              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
-              <li style="margin-bottom: 0.5rem;">An electrical metal entity, with an electric generator with a cpu
-                inside, the boss has multiple ways of being defeated.</li>
-              <li style="margin-bottom: 0.5rem;">The engineer can use a search check to find a suit that can withstand
-                electricity, to try and turn off the generator from the inside.</li>
-              <li style="margin-bottom: 0.5rem;">The programmer can connect to the boss to try and turn the generator
-                off with code.</li>
-              <li>Supporting roles like physicist boosted by mathematician can try and destroy the generator by a
-                well-thrown object.</li>
-            </ul>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: auto;">
+            <button class="answer-toggle-btn" data-role="engineer" style="flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: var(--primary); border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+              <i data-lucide="eye" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>
+              Show Answer
+            </button>
+            <button class="evolution-toggle-btn" data-role="engineer" style="flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: var(--primary); border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+              <i data-lucide="zap" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>
+              Show Evolution
+            </button>
           </div>
 
-          <div
-            style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-top: auto;">
-            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--foreground); margin-bottom: 0.25rem;">Teacher
-              Notes</h4>
-            <p style="font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.5;">This section helps the
-              teacher guide students through the puzzle and control the boss interaction during gameplay.</p>
+          <div class="answer-reveal" data-role="engineer" style="display: none; margin-top: 1.5rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.25); padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;">Answer</h4>
+            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">Roll <strong style="color: var(--foreground);">14 or above</strong> and <strong style="color: var(--foreground);">cut</strong> or <strong style="color: var(--foreground);">reconnect the wire</strong> successfully to pass.</p>
+          </div>
+
+          <div class="evolution-reveal" data-role="engineer" style="display: none; margin-top: 1.5rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.25); padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;">Evolution</h4>
+            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">Roll <strong style="color: var(--foreground);">13 or below</strong> may cause the player to stumble into the grid and lose health.</p>
           </div>
         </div>
 
@@ -179,26 +168,31 @@
           <div style="margin-bottom: 2rem;">
             <h3
               style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
-              <i data-lucide="swords" style="width: 18px; height: 18px; color: var(--primary);"></i> Boss
+              <i data-lucide="puzzle" style="width: 18px; height: 18px; color: var(--primary);"></i> Puzzle 2
             </h3>
-            <ul
-              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
-              <li style="margin-bottom: 0.5rem;">A self replicating geometry based intelligence which constantly shifts
-                geometric shapes.</li>
-              <li style="margin-bottom: 0.5rem;">It can split itself create smaller versions which can be a nuisance to
-                the players.</li>
-              <li style="margin-bottom: 0.5rem;">The mathematician can defeat it by identifying the pattern of what
-                shape it shifts to and predicting the next one thats coming.</li>
-              <li>Then using that info to decode pattern and stop the replication.</li>
-            </ul>
+            <p style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; margin: 0 0 0.75rem 0;">How many unique configurations are there of a 3×3 board if each section must be painted one of three colors?</p>
+            <p style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; margin: 0; padding: 0.75rem; background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); border-radius: 0 0.25rem 0.25rem 0;"><strong style="color: var(--foreground);">Answer:</strong> <strong style="color: var(--primary);">2,862</strong> unique configurations</p>
           </div>
 
-          <div
-            style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-top: auto;">
-            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--foreground); margin-bottom: 0.25rem;">Teacher
-              Notes</h4>
-            <p style="font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.5;">This section helps the
-              teacher guide students through the puzzle and control the boss interaction during gameplay.</p>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: auto;">
+            <button class="answer-toggle-btn" data-role="mathematician" style="flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: var(--primary); border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+              <i data-lucide="eye" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>
+              Show Answer
+            </button>
+            <button class="evolution-toggle-btn" data-role="mathematician" style="flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: var(--primary); border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+              <i data-lucide="zap" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>
+              Show Evolution
+            </button>
+          </div>
+
+          <div class="answer-reveal" data-role="mathematician" style="display: none; margin-top: 1.5rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.25); padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;">Answer (Puzzle 1)</h4>
+            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">Press the <strong style="color: var(--foreground);">correct order</strong> and <strong style="color: var(--foreground);">remember previous correct orders</strong> to complete.</p>
+          </div>
+
+          <div class="evolution-reveal" data-role="mathematician" style="display: none; margin-top: 1.5rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.25); padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;">Evolution</h4>
+            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">If guessed wrong <strong style="color: var(--foreground);">3 times</strong>, the pressure plate order resets to a different order.</p>
           </div>
         </div>
 
@@ -226,31 +220,25 @@
             </ul>
           </div>
 
-          <div style="margin-bottom: 2rem;">
-            <h3
-              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
-              <i data-lucide="swords" style="width: 18px; height: 18px; color: var(--primary);"></i> Boss
-            </h3>
-            <ul
-              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
-              <li style="margin-bottom: 0.5rem;">A monstrous formation made out of radioactive waste with an unstable
-                miniature reactor in its body.</li>
-              <li style="margin-bottom: 0.5rem;">Getting too close will hurt any player and slowly drain their health.
-              </li>
-              <li style="margin-bottom: 0.5rem;">In order to defeat it, the Physicist needs to fend off the radiation
-                somehow, find a console connected to it to shut it down, throw sand onto it to try and smother the
-                reactor, stabilize it with control rods.</li>
-              <li>(Doing the wrong move could potentially make the radioactive output higher, dealing more damage, or
-                explode, causing major damage to all players.)</li>
-            </ul>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: auto;">
+            <button class="answer-toggle-btn" data-role="physicist" style="flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: var(--primary); border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+              <i data-lucide="eye" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>
+              Show Answer
+            </button>
+            <button class="evolution-toggle-btn" data-role="physicist" style="flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: var(--primary); border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+              <i data-lucide="zap" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>
+              Show Evolution
+            </button>
           </div>
 
-          <div
-            style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-top: auto;">
-            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--foreground); margin-bottom: 0.25rem;">Teacher
-              Notes</h4>
-            <p style="font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.5;">This section helps the
-              teacher guide students through the puzzle and control the boss interaction during gameplay.</p>
+          <div class="answer-reveal" data-role="physicist" style="display: none; margin-top: 1.5rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.25); padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;">Answer</h4>
+            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">Natural 20 + <strong style="color: var(--foreground);">reseal chamber</strong> OR <strong style="color: var(--foreground);">reverse gravitational field</strong> OR <strong style="color: var(--foreground);">make black hole spin faster</strong> → succeed.</p>
+          </div>
+
+          <div class="evolution-reveal" data-role="physicist" style="display: none; margin-top: 1.5rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.25); padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;">Evolution</h4>
+            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">Roll <strong style="color: var(--foreground);">14 or less</strong> or choose <strong style="color: var(--foreground);">wrong option</strong> makes the black hole bigger and harder to solve.</p>
           </div>
         </div>
 
@@ -278,33 +266,38 @@
             </ul>
           </div>
 
-          <div style="margin-bottom: 2rem;">
-            <h3
-              style="font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
-              <i data-lucide="swords" style="width: 18px; height: 18px; color: var(--primary);"></i> Boss
-            </h3>
-            <ul
-              style="color: var(--muted-foreground); font-size: 0.95rem; line-height: 1.6; padding-left: 1.25rem; list-style-type: disc;">
-              <li style="margin-bottom: 0.5rem;">A dangerous virus that hides itself in the files of the main terminal
-                of the dungeon. The main terminal holds important data to find the geocache.</li>
-              <li style="margin-bottom: 0.5rem;">The virus keeps eating data and shifting forms, making it difficult to
-                track down or take out quickly.</li>
-              <li style="margin-bottom: 0.5rem;">Programmer class has multiple attack options: write counter-scripts,
-                delete corrupted processes, locate the root of the infection.</li>
-              <li>Bad dice throws can make bad scripts, possibly making the virus stronger, delete important files
-                instead of corrupted ones, or locating dummy root files instead of the actual root file.</li>
-            </ul>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: auto;">
+            <button class="answer-toggle-btn" data-role="programmer" style="flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: var(--primary); border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+              <i data-lucide="eye" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>
+              Show Answer
+            </button>
+            <button class="evolution-toggle-btn" data-role="programmer" style="flex: 1; min-width: 120px; padding: 0.65rem 1rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); color: var(--primary); border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+              <i data-lucide="zap" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>
+              Show Evolution
+            </button>
           </div>
 
-          <div
-            style="background: rgba(0,229,255,0.04); border-left: 3px solid var(--primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-top: auto;">
-            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--foreground); margin-bottom: 0.25rem;">Teacher
-              Notes</h4>
-            <p style="font-size: 0.85rem; color: var(--muted-foreground); line-height: 1.5;">This section helps the
-              teacher guide students through the puzzle and control the boss interaction during gameplay.</p>
+          <div class="answer-reveal" data-role="programmer" style="display: none; margin-top: 1.5rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.25); padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;">Answer</h4>
+            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">Use <strong style="color: var(--foreground);">terminal login</strong> correctly and <strong style="color: var(--foreground);">collect all coins</strong>. Inspection check reveals the second door is already <strong style="color: var(--foreground);">unlocked</strong>.</p>
+          </div>
+
+          <div class="evolution-reveal" data-role="programmer" style="display: none; margin-top: 1.5rem; background: rgba(0,229,255,0.06); border: 1px solid rgba(0,229,255,0.25); padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600; font-size: 0.9rem; color: var(--primary); margin: 0 0 0.5rem 0;">Evolution</h4>
+            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;"><strong style="color: var(--foreground);">No evolution</strong> mechanic for this puzzle.</p>
           </div>
         </div>
       </div>
+
+      <section id="custom-puzzle-ideas" class="custom-puzzle-section animate-fade-in-up" style="animation-delay: 0.2s;">
+        <h2 class="custom-puzzle-section__title">
+          Custom <span class="text-primary text-glow">Puzzle Ideas</span>
+        </h2>
+        <p class="text-muted custom-puzzle-section__intro">
+          Puzzles you add from <strong style="color: var(--foreground); font-weight: 600;">Creator → Add Puzzle Ideas</strong> are stored on this device only.
+        </p>
+        <div id="custom-puzzle-mount" class="custom-puzzle-mount"></div>
+      </section>
 
       <div class="text-center animate-fade-in-up" style="animation-delay: .25s; margin-top: 2.5rem;">
         <a href="teacher.html" class="btn btn-outline-cyan" style="padding: 0.65rem 1.75rem;">

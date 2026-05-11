@@ -78,6 +78,19 @@
             </span>
           </a>
 
+          <!-- Creator Card -->
+          <a href="creator.html" class="dashboard-card" id="card-creator">
+            <div class="dashboard-card__icon-wrap">
+              <i data-lucide="wrench" style="width: 32px; height: 32px;"></i>
+            </div>
+            <h2 class="dashboard-card__title">Creator</h2>
+            <p class="dashboard-card__desc">Download printable resources, character templates, maps, and add new puzzle ideas.</p>
+            <span class="dashboard-card__btn">
+              <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+              Open Creator Tools
+            </span>
+          </a>
+
         </div>
       </div>
     </section>
@@ -111,7 +124,14 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="script.js"></script>
   <script>
-    lucide.createIcons();
+    function initIndexLucideIcons() {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initIndexLucideIcons);
+    } else {
+      initIndexLucideIcons();
+    }
   </script>
 </body>
 </html>

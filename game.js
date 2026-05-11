@@ -6,6 +6,21 @@ const WORKER_OFFSET = PADDING + (CELL_SIZE - 32) / 2; // = 14
 const PATROL_OFFSET = PADDING + (CELL_SIZE - 28) / 2; // = 16
 const STEP_MS = 300; // Animation / Tick speed
 
+// --- BACK BUTTON FUNCTIONALITY ---
+document.addEventListener('DOMContentLoaded', function() {
+  const backButton = document.getElementById('back-button');
+  if (backButton) {
+    backButton.addEventListener('click', function() {
+      window.location.href = 'rules.html';
+    });
+  }
+  
+  // Initialize Lucide icons
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+});
+
 // Directions: 0: North, 1: East, 2: South, 3: West
 const DIR = { N: 0, E: 1, S: 2, W: 3 };
 const VECTORS = [
