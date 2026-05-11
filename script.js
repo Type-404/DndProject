@@ -11,6 +11,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- Puzzle Guide Toggle Buttons ---
+  const answerToggleBtns = document.querySelectorAll('.answer-toggle-btn');
+  const evolutionToggleBtns = document.querySelectorAll('.evolution-toggle-btn');
+
+  answerToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const role = btn.getAttribute('data-role');
+      const answerReveal = document.querySelector(`.answer-reveal[data-role="${role}"]`);
+      const isVisible = answerReveal.style.display !== 'none';
+      
+      if (isVisible) {
+        answerReveal.style.display = 'none';
+        btn.innerHTML = '<i data-lucide="eye" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>Show Answer';
+      } else {
+        answerReveal.style.display = 'block';
+        btn.innerHTML = '<i data-lucide="eye-off" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>Hide Answer';
+      }
+      lucide.createIcons();
+    });
+  });
+
+  evolutionToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const role = btn.getAttribute('data-role');
+      const evolutionReveal = document.querySelector(`.evolution-reveal[data-role="${role}"]`);
+      const isVisible = evolutionReveal.style.display !== 'none';
+      
+      if (isVisible) {
+        evolutionReveal.style.display = 'none';
+        btn.innerHTML = '<i data-lucide="zap" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>Show Evolution';
+      } else {
+        evolutionReveal.style.display = 'block';
+        btn.innerHTML = '<i data-lucide="zap-off" style="width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem;"></i>Hide Evolution';
+      }
+      lucide.createIcons();
+    });
+  });
+
   // --- Journey Logic ---
   const stages = document.querySelectorAll('.journey-card');
   let completedSteps = [];
@@ -123,6 +161,62 @@ document.addEventListener("DOMContentLoaded", () => {
           updateChallenges();
         }
       });
+    });
+  }
+
+  // --- Map download: print preview with image only (new window) ---
+  const printMapBtn = document.getElementById('btn-print-map');
+  const mapPreviewImg = document.querySelector('.map-download-preview-img');
+  if (printMapBtn && mapPreviewImg) {
+    printMapBtn.addEventListener('click', () => {
+      const src = mapPreviewImg.currentSrc || mapPreviewImg.getAttribute('src');
+      if (!src) return;
+
+      const printWin = window.open('', '_blank', 'noopener,noreferrer');
+      if (!printWin) {
+        window.alert('Please allow pop-ups for this site to print the map.');
+        return;
+      }
+
+      const doc = printWin.document;
+      doc.open();
+      doc.write('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Print map</title>');
+      doc.write('<style>html,body{margin:0;padding:0;background:#fff}img{display:block;width:100%;max-width:100%;height:auto}@media print{img{page-break-inside:avoid}}</style>');
+      doc.write('</head><body></body></html>');
+      doc.close();
+
+      const img = doc.createElement('img');
+      img.alt = mapPreviewImg.getAttribute('alt') || 'Map';
+      img.src = src;
+
+      function runPrint() {
+        printWin.focus();
+        printWin.addEventListener('afterprint', () => {
+          try {
+            printWin.close();
+          } catch (e) { /* ignore */ }
+        }, { once: true });
+        printWin.print();
+        window.setTimeout(() => {
+          try {
+            if (printWin && !printWin.closed) printWin.close();
+          } catch (e) { /* ignore */ }
+        }, 500);
+      }
+
+      img.onerror = () => {
+        try {
+          printWin.close();
+        } catch (e) { /* ignore */ }
+        window.alert('Could not load the map image for printing.');
+      };
+
+      doc.body.appendChild(img);
+      if (img.complete && img.naturalWidth > 0) {
+        runPrint();
+      } else {
+        img.onload = () => runPrint();
+      }
     });
   }
 
