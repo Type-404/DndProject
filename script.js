@@ -661,9 +661,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  document.getElementById("creator-map-creator-link")?.addEventListener("click", (e) => {
-    e.preventDefault();
-  });
 
   const importMapInput = document.getElementById("creator-import-map-input");
   const importMapPreview = document.getElementById("creator-import-map-preview");
@@ -706,8 +703,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const studentDashEmpty = document.getElementById("student-dash-empty");
   const studentDashMain = document.getElementById("student-dash-main");
-  const studentPuzzleBtn = document.getElementById("btn-open-programming-puzzle");
-  if (studentDashEmpty && studentDashMain && studentPuzzleBtn) {
+  const studentDashPuzzleCard = document.getElementById("student-dash-puzzle-card");
+  if (studentDashEmpty && studentDashMain && studentDashPuzzleCard) {
     let party = null;
     try {
       party = JSON.parse(localStorage.getItem("questAcademy_studentParty") || "null");
@@ -732,19 +729,24 @@ document.addEventListener("DOMContentLoaded", () => {
       const bgTitle = document.getElementById("student-dash-bg-title");
       if (bgTitle) bgTitle.textContent = b.title || "";
       const bgTrait = document.getElementById("student-dash-bg-trait");
-      if (bgTrait) bgTrait.textContent = b.trait ? "Trait: " + b.trait : "";
+      if (bgTrait) bgTrait.textContent = b.trait || "—";
+      const bgBonus = document.getElementById("student-dash-bg-bonus");
+      if (bgBonus) bgBonus.textContent = b.ability || "—";
 
-      studentPuzzleBtn.addEventListener("click", () => {
-        const code = window.prompt("Enter the access code from your teacher:");
-        if (code === null) return;
-        if (String(code).trim().toLowerCase() === PROGRAMMING_PUZZLE_ACCESS) {
-          window.location.href = "game.html";
-        } else {
-          window.alert(
-            "That code is not correct. Ask your teacher for the programming puzzle access code."
-          );
+      if (c.role === "Programmer") {
+        studentDashPuzzleCard.classList.remove("hidden");
+
+        const puzzleForm = document.getElementById("puzzle-access-form");
+        const puzzleInput = document.getElementById("puzzle-access-input");
+        const puzzleError = document.getElementById("puzzle-access-error");
+
+        if (puzzleForm && puzzleInput) {
+          puzzleForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            window.location.href = "game.html";
+          });
         }
-      });
+      }
     }
     try {
       if (typeof lucide !== "undefined") lucide.createIcons();
@@ -752,5 +754,21 @@ document.addEventListener("DOMContentLoaded", () => {
       /* ignore */
     }
   }
+
+  document.querySelectorAll(".student-dash-btn-back").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const fallback = btn.getAttribute("data-fallback") || "character.html";
+      try {
+        const ref = document.referrer;
+        if (ref && new URL(ref).origin === window.location.origin) {
+          window.history.back();
+          return;
+        }
+      } catch (_) {
+        /* ignore */
+      }
+      window.location.href = fallback;
+    });
+  });
 
 });
