@@ -91,21 +91,23 @@ class App {
     wireStartGameSave() {
         const startBtn = document.getElementById("btn-start-game");
         if (!startBtn) return;
-        startBtn.addEventListener("click", () => {
-            if (this.gameState.character && this.gameState.background) {
-                try {
-                    localStorage.setItem(
-                        "questAcademy_studentParty",
-                        JSON.stringify({
-                            character: this.gameState.character,
-                            background: this.gameState.background,
-                            savedAt: Date.now(),
-                        })
-                    );
-                } catch (e) {
-                    console.warn("Could not save party to localStorage:", e);
-                }
+        startBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (!this.gameState.character || !this.gameState.background) return;
+            try {
+                localStorage.setItem(
+                    "questAcademy_studentParty",
+                    JSON.stringify({
+                        character: this.gameState.character,
+                        background: this.gameState.background,
+                        savedAt: Date.now(),
+                    })
+                );
+            } catch (err) {
+                console.warn("Could not save party to localStorage:", err);
             }
+            const isProgrammer = this.gameState.character.role === "Programmer";
+            window.location.href = isProgrammer ? "game.html" : "role-overview.html";
         });
     }
 
@@ -264,8 +266,21 @@ class App {
     }
 
     startGame() {
-        // Navigate to rules page
-        window.location.href = 'rules.html';
+        if (!this.gameState.character || !this.gameState.background) return;
+        try {
+            localStorage.setItem(
+                "questAcademy_studentParty",
+                JSON.stringify({
+                    character: this.gameState.character,
+                    background: this.gameState.background,
+                    savedAt: Date.now(),
+                })
+            );
+        } catch (err) {
+            console.warn("Could not save party to localStorage:", err);
+        }
+        const isProgrammer = this.gameState.character.role === "Programmer";
+        window.location.href = isProgrammer ? "game.html" : "role-overview.html";
     }
 }
 
