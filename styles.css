@@ -1228,7 +1228,7 @@ main {
 .student-dashboard-body main.student-dashboard-main {
   flex: 1;
   display: block;
-  padding-top: 7rem;
+  padding-top: 9rem;
   padding-bottom: 3rem;
 }
 
@@ -1241,7 +1241,7 @@ main {
 }
 
 .student-dash-page-head {
-  margin-bottom: 1.75rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 

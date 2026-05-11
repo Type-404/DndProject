@@ -34,11 +34,10 @@ body {
 }
 
 /* Back Button */
-#back-button-container {
-  position: fixed;
-  top: clamp(96px, 12vh, 126px);
-  left: clamp(12px, 3vw, 28px);
-  z-index: 1000;
+.back-and-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .back-btn {
