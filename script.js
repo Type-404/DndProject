@@ -661,6 +661,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  document.getElementById("creator-map-creator-link")?.addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+
   const importMapInput = document.getElementById("creator-import-map-input");
   const importMapPreview = document.getElementById("creator-import-map-preview");
   if (importMapInput && importMapPreview) {

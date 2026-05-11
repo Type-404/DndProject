@@ -1182,6 +1182,146 @@ main {
   margin: 0 auto;
 }
 
+.creator-tools-grid.dashboard-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  max-width: 1200px;
+}
+
+.creator-import-map-card,
+.creator-map-creator-card {
+  cursor: default;
+}
+
+.creator-import-map-label {
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.creator-import-map-preview {
+  margin-top: 1rem;
+  width: 100%;
+  min-height: 2rem;
+}
+
+.creator-import-map-preview__img {
+  display: block;
+  max-width: 100%;
+  max-height: 220px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+/* Student session dashboard */
+.student-dashboard-shell {
+  max-width: 720px;
+  padding: 4rem 0 5rem;
+}
+
+.student-dashboard-lead {
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.student-dashboard-empty {
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(0, 229, 255, 0.22);
+}
+
+.student-dash-party {
+  border-radius: 1rem;
+  padding: 1.75rem;
+  border: 1px solid rgba(0, 229, 255, 0.22);
+  margin-bottom: 1.5rem;
+}
+
+.student-dash-party__layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.student-dash-party__img {
+  width: 160px;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  object-fit: cover;
+}
+
+.student-dash-party__meta {
+  flex: 1;
+  min-width: 200px;
+  text-align: left;
+}
+
+.student-dash-party__name {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+}
+
+.student-dash-party__role {
+  margin: 0 0 1rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.student-dash-party__bg-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted-foreground);
+  margin: 0 0 0.25rem;
+}
+
+.student-dash-party__bg-title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.student-dash-puzzle-card {
+  border-radius: 1rem;
+  padding: 1.75rem;
+  border: 1px solid rgba(0, 229, 255, 0.28);
+}
+
+.student-dash-puzzle-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.student-dash-puzzle-card__icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.student-dash-puzzle-card__title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.student-dash-puzzle-card__desc {
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
 .dashboard-card {
   position: relative;
   display: flex;
