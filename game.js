@@ -28,7 +28,7 @@ const VECTORS = [
 
 const TILE = { EMPTY: 0, WALL: 1, BIN: 2, COIN_SOURCE: 3 };
 
-let globalWalletCoins = 100;
+let globalWalletCoins = 0;
 
 const STORE_ITEMS = [
   { id: 'cmd_turnLeft', type: 'cmd', name: 'TurnLeft()', cost: 1, purchased: false, desc: 'Allows you to turn counter-clockwise without moving.', demo: "MoveForward();\nTurnLeft(); // Worker rotates 90 degrees CCW\nMoveForward();" },
