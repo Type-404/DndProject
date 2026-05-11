@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Tools — Dice & Discoveries</title>
+  <meta name="description" content="Resources for building and expanding Dice & Discoveries with printable maps, character templates, and puzzle ideas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-grid">
+  <div class="bg-effects-wrapper">
+    <div class="bg-effect-1 animate-pulse-glow"></div>
+    <div class="bg-effect-2 animate-float"></div>
+  </div>
+
+  <header>
+    <nav class="glass-strong nav-container">
+      <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
+        <a href="index.html" class="nav-logo group">
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
+        </a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="teacher.html" class="nav-link">Teacher</a></li>
+        <li><a href="story.html" class="nav-link">Story</a></li>
+        <li><a href="puzzle-guide.html" class="nav-link">Puzzle Guide</a></li>
+        <li><a href="creator.html" class="nav-link active">Creator</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="home-container" style="max-width: 1000px; padding: 4rem 0;">
+      <div class="text-center animate-fade-in-up" style="margin-bottom: 2.5rem;">
+        <h1 class="text-4xl font-bold mb-4" style="font-size: clamp(2rem, 4vw, 3rem);">
+          Creator <span class="text-primary text-glow">Tools</span>
+        </h1>
+        <p class="text-muted" style="max-width: 640px; margin: 0 auto; line-height: 1.8;">
+          Resources for building and expanding Dice & Discoveries. Download printable assets, use character templates, and plan new puzzle ideas.
+        </p>
+      </div>
+
+      <div class="dashboard-grid creator-tools-grid animate-fade-in-up" style="animation-delay:.2s;">
+
+        <a href="map-download.html" class="dashboard-card">
+          <div class="dashboard-card__icon-wrap creator-card-icon-wrap">
+            <i data-lucide="map" style="width:32px;height:32px;"></i>
+          </div>
+          <h2 class="dashboard-card__title">Download Map</h2>
+          <p class="dashboard-card__desc">Print the dungeon/school map for gameplay with a ready-to-use printable asset.</p>
+          <span class="dashboard-card__btn">
+            <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+            Download Map
+          </span>
+        </a>
+
+        <a href="character-templates.html" class="dashboard-card">
+          <div class="dashboard-card__icon-wrap creator-card-icon-wrap">
+            <i data-lucide="id-card" style="width:32px;height:32px;"></i>
+          </div>
+          <h2 class="dashboard-card__title">Download Character Template</h2>
+          <p class="dashboard-card__desc">Print blank character sheets so players can record stats, traits, and choices.</p>
+          <span class="dashboard-card__btn">
+            <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+            Download Template
+          </span>
+        </a>
+
+        <a href="puzzle-creator.html" class="dashboard-card">
+          <div class="dashboard-card__icon-wrap creator-card-icon-wrap">
+            <i data-lucide="puzzle" style="width:32px;height:32px;"></i>
+          </div>
+          <h2 class="dashboard-card__title">Add Puzzle Ideas</h2>
+          <p class="dashboard-card__desc">Plan new STEM puzzles and boss encounters for future game sessions.</p>
+          <span class="dashboard-card__btn">
+            <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+            Create Puzzle
+          </span>
+        </a>
+
+      </div>
+
+      <div class="text-center" style="margin-top: 3rem;">
+        <a href="index.html" class="btn btn-outline-cyan" style="padding: 0.75rem 1.75rem;">
+          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+          Back to Dashboard
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-open');
+      });
+    }
+  </script>
+</body>
+
+</html>

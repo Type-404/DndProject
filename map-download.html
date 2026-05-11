@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Map — Dice & Discoveries</title>
+  <meta name="description" content="Download or print the Dice & Discoveries school map asset.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-grid map-download-page">
+
+  <div class="bg-effects-wrapper map-download-no-print">
+    <div class="bg-effect-1 animate-pulse-glow"></div>
+    <div class="bg-effect-2 animate-float"></div>
+  </div>
+
+  <header class="map-download-no-print">
+    <nav class="glass-strong nav-container">
+      <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
+        <a href="index.html" class="nav-logo group">
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
+        </a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="teacher.html" class="nav-link">Teacher</a></li>
+        <li><a href="story.html" class="nav-link">Story</a></li>
+        <li><a href="puzzle-guide.html" class="nav-link">Puzzle Guide</a></li>
+        <li><a href="creator.html" class="nav-link active">Creator</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="creator-subpage-shell home-container animate-fade-in-up">
+      <div class="text-center creator-subpage-header">
+        <h1 class="creator-subpage-title">
+          Download <span class="text-primary text-glow">Map</span>
+        </h1>
+        <p class="text-muted creator-subpage-intro">
+          Get a printable version of the school dungeon map for your Dice & Discoveries session. Preview below, then download or send straight to print.
+        </p>
+      </div>
+
+      <div class="map-download-preview-wrap glass-strong map-print-area">
+        <img
+          class="map-download-preview-img"
+          src="https://placehold.co/1200x675/0a0f18/00e5ff/png?text=Map+preview+%28placeholder%29"
+          width="1200"
+          height="675"
+          alt="Map preview placeholder">
+      </div>
+
+      <div class="creator-subpage-actions map-download-no-print">
+        <a href="#" class="btn btn-lg glow-md" id="btn-download-map" download="">
+          <i data-lucide="download" style="width: 20px; height: 20px;"></i>
+          Download Map
+        </a>
+        <button type="button" class="btn btn-outline-cyan btn-lg" id="btn-print-map">
+          <i data-lucide="printer" style="width: 20px; height: 20px;"></i>
+          Print Map
+        </button>
+      </div>
+
+      <p class="text-center text-muted text-sm map-download-no-print" style="margin-top: 1rem;">
+        Replace the preview image URL with your real asset when the file is ready.
+      </p>
+
+      <div class="text-center map-download-no-print" style="margin-top: 2rem;">
+        <a href="creator.html" class="btn btn-outline-cyan" style="padding: 0.75rem 1.75rem;">
+          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+          Back to Creator Tools
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-open');
+      });
+    }
+
+    document.getElementById('btn-print-map').addEventListener('click', () => window.print());
+  </script>
+</body>
+
+</html>

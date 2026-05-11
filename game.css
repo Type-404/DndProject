@@ -36,7 +36,7 @@ body {
 /* Back Button */
 #back-button-container {
   position: fixed;
-  top: clamp(84px, 10vh, 112px);
+  top: clamp(96px, 12vh, 126px);
   left: clamp(12px, 3vw, 28px);
   z-index: 1000;
 }

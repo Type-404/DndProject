@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Puzzle Ideas — Dice & Discoveries</title>
+  <meta name="description" content="Submit and locally save puzzle ideas for Dice & Discoveries.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-grid">
+
+  <div class="bg-effects-wrapper">
+    <div class="bg-effect-1 animate-pulse-glow"></div>
+    <div class="bg-effect-2 animate-float"></div>
+  </div>
+
+  <header>
+    <nav class="glass-strong nav-container">
+      <div class="w-full sm:w-auto flex justify-between items-center" style="flex: 1;">
+        <a href="index.html" class="nav-logo group">
+          <i data-lucide="dices"></i>
+          <span>Dice & Discoveries</span>
+        </a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn md:hidden" aria-label="Toggle Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="teacher.html" class="nav-link">Teacher</a></li>
+        <li><a href="story.html" class="nav-link">Story</a></li>
+        <li><a href="puzzle-guide.html" class="nav-link">Puzzle Guide</a></li>
+        <li><a href="creator.html" class="nav-link active">Creator</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="creator-subpage-shell home-container animate-fade-in-up">
+      <div class="text-center creator-subpage-header">
+        <h1 class="creator-subpage-title">
+          Add Puzzle <span class="text-primary text-glow">Ideas</span>
+        </h1>
+        <p class="text-muted creator-subpage-intro">
+          Capture puzzle concepts for future sessions. Ideas are stored in this browser (localStorage) until you replace them by clearing site data or exporting elsewhere.
+        </p>
+      </div>
+
+      <form id="puzzle-idea-form" class="puzzle-creator-form glass-strong" autocomplete="off">
+        <div class="puzzle-creator-form__group">
+          <label class="puzzle-creator-form__label" for="puzzle-title">Puzzle Title</label>
+          <input class="puzzle-creator-form__input input" id="puzzle-title" name="title" type="text" placeholder="Short name for the puzzle" required>
+        </div>
+
+        <div class="puzzle-creator-form__group">
+          <label class="puzzle-creator-form__label" for="puzzle-role">Role</label>
+          <input class="puzzle-creator-form__input input" id="puzzle-role" name="role" type="text" placeholder="e.g. Chemist, any role, whole team…">
+        </div>
+
+        <div class="puzzle-creator-form__group">
+          <label class="puzzle-creator-form__label" for="puzzle-desc">Puzzle Description</label>
+          <textarea class="puzzle-creator-form__textarea input" id="puzzle-desc" name="description" rows="4" placeholder="What do players experience? What clues exist?"></textarea>
+        </div>
+
+        <div class="puzzle-creator-form__group">
+          <label class="puzzle-creator-form__label" for="puzzle-boss">Boss / Challenge Idea</label>
+          <textarea class="puzzle-creator-form__textarea input" id="puzzle-boss" name="boss" rows="3" placeholder="Optional encounter twist or escalation"></textarea>
+        </div>
+
+        <div class="puzzle-creator-form__group">
+          <label class="puzzle-creator-form__label" for="puzzle-answer">Answer / Solution</label>
+          <textarea class="puzzle-creator-form__textarea input" id="puzzle-answer" name="answer" rows="3" placeholder="Teacher-only notes or canonical solution"></textarea>
+        </div>
+
+        <div id="puzzle-save-success" class="puzzle-creator-form__success hidden" role="status">
+          <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+          Puzzle idea saved on this device.
+        </div>
+
+        <button type="submit" class="btn btn-lg glow-md puzzle-creator-form__submit">
+          <i data-lucide="save" style="width: 20px; height: 20px;"></i>
+          Save Puzzle Idea
+        </button>
+      </form>
+
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="creator.html" class="btn btn-outline-cyan" style="padding: 0.75rem 1.75rem;">
+          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+          Back to Creator Tools
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    const STORAGE_KEY = 'questAcademy_puzzleIdeas';
+
+    lucide.createIcons();
+
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-open');
+      });
+    }
+
+    const form = document.getElementById('puzzle-idea-form');
+    const successEl = document.getElementById('puzzle-save-success');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const idea = {
+        title: document.getElementById('puzzle-title').value.trim(),
+        role: document.getElementById('puzzle-role').value.trim(),
+        description: document.getElementById('puzzle-desc').value.trim(),
+        boss: document.getElementById('puzzle-boss').value.trim(),
+        answer: document.getElementById('puzzle-answer').value.trim(),
+        savedAt: Date.now()
+      };
+
+      try {
+        const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        if (!Array.isArray(existing)) throw new Error('bad store');
+        existing.push(idea);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+      } catch (_) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify([idea]));
+      }
+
+      successEl.classList.remove('hidden');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      form.reset();
+
+      window.clearTimeout(successEl._tid);
+      successEl._tid = window.setTimeout(() => successEl.classList.add('hidden'), 5000);
+    });
+  </script>
+</body>
+
+</html>

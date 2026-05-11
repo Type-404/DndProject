@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
 }
+/* favicon */
 
 :root {
   /* Dark sci-fi neon blue theme */
@@ -1141,9 +1142,9 @@ main {
 /* ---------- Dashboard path cards ---------- */
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -1472,6 +1473,36 @@ main {
   }
 }
 
+/* Toggle Button Styles */
+.answer-toggle-btn:hover,
+.evolution-toggle-btn:hover {
+  background: rgba(0, 229, 255, 0.15) !important;
+  border-color: rgba(0, 229, 255, 0.5) !important;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.answer-toggle-btn:active,
+.evolution-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.answer-reveal,
+.evolution-reveal {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #journey-content {
   width: calc(100% - 2rem);
   max-width: 1100px;
@@ -1771,4 +1802,227 @@ main {
   color: var(--muted-foreground);
   font-size: 0.95rem;
   margin-bottom: 0;
+}
+
+/* ════════════════════════════════════════════
+   Creator Tools — neon icons & sub-pages
+   ════════════════════════════════════════════ */
+
+.creator-tools-grid .dashboard-card__icon-wrap svg,
+.creator-tools-grid .creator-card-icon-wrap svg {
+  color: var(--primary);
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.creator-tools-grid .dashboard-card__icon-wrap,
+.creator-card-icon-wrap {
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.12);
+}
+
+.creator-tools-grid .dashboard-card:hover .creator-card-icon-wrap svg,
+.template-card:hover .creator-card-icon-wrap svg {
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.5));
+}
+
+.creator-tools-grid .dashboard-card__icon-wrap svg,
+.template-card .creator-card-icon-wrap svg {
+  filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.35));
+}
+
+.creator-subpage-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4rem 0 5rem;
+}
+
+.creator-subpage-header {
+  margin-bottom: 2.5rem;
+}
+
+.creator-subpage-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.creator-subpage-intro {
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.creator-subpage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Map download */
+.map-download-preview-wrap {
+  border-radius: 1.25rem;
+  padding: 1rem;
+  border-color: rgba(0, 229, 255, 0.2);
+  overflow: hidden;
+}
+
+.map-download-preview-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(72vh, 540px);
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+/* Character templates */
+.template-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .template-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .template-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.template-card {
+  border-radius: 1.25rem;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid rgba(0, 229, 255, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.template-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 229, 255, 0.45);
+  box-shadow: 0 12px 40px rgba(0, 229, 255, 0.12);
+}
+
+.template-card__icon-wrap {
+  margin-bottom: 1.25rem;
+}
+
+.template-card__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.template-card__desc {
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.template-card__dl {
+  text-decoration: none;
+}
+
+.template-card .creator-card-icon-wrap {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+/* Puzzle creator form */
+.puzzle-creator-form {
+  max-width: 640px;
+  margin: 0 auto;
+  border-radius: 1.25rem;
+  padding: 2rem 2rem 2.25rem;
+  border: 1px solid rgba(0, 229, 255, 0.22);
+}
+
+.puzzle-creator-form__group {
+  margin-bottom: 1.35rem;
+}
+
+.puzzle-creator-form__group:last-of-type {
+  margin-bottom: 1.75rem;
+}
+
+.puzzle-creator-form__label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+  margin-bottom: 0.45rem;
+}
+
+.puzzle-creator-form__textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.puzzle-creator-form__success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+  border-radius: 0.5rem;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.puzzle-creator-form__submit {
+  width: 100%;
+}
+
+@media print {
+  body.map-download-page .map-download-no-print {
+    display: none !important;
+  }
+
+  body.map-download-page {
+    background: #fff !important;
+  }
+
+  body.map-download-page .map-print-area.glass-strong {
+    background: #fff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  body.map-download-page .map-download-preview-img {
+    max-height: none;
+    border: none !important;
+  }
 }
