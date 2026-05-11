@@ -173,62 +173,127 @@ document.addEventListener("DOMContentLoaded", () => {
   const mapPreviewImg = document.getElementById("map-download-preview");
   if (printMapBtn && mapPreviewImg) {
     printMapBtn.addEventListener("click", () => {
-      const attrSrc = mapPreviewImg.getAttribute("src");
-      if (!attrSrc) return;
-      let src;
-      try {
-        src = new URL(attrSrc, document.baseURI).href;
-      } catch (e) {
-        src = mapPreviewImg.currentSrc || attrSrc;
+      function escapeHtmlAttr(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/"/g, "&quot;")
+          .replace(/</g, "&lt;");
       }
 
-      const printWin = window.open("", "_blank", "noopener,noreferrer");
+      let resolvedSrc = "";
+      try {
+        resolvedSrc =
+          mapPreviewImg.currentSrc ||
+          new URL(mapPreviewImg.getAttribute("src") || "", document.baseURI).href;
+      } catch (e) {
+        resolvedSrc = mapPreviewImg.getAttribute("src") || "";
+      }
+      if (!resolvedSrc) {
+        window.alert("Map image address is missing.");
+        return;
+      }
+
+      // Do not use noopener/noreferrer here: some browsers treat the new document
+      // as non-writable or leave about:blank without a reliably mutable document.
+      const printWin = window.open("", "_blank");
       if (!printWin) {
-        window.alert('Please allow pop-ups for this site to print the map.');
+        window.alert("Please allow pop-ups for this site to print the map.");
         return;
       }
 
       const doc = printWin.document;
+      const alt = mapPreviewImg.getAttribute("alt") || "Map";
+      const printCss =
+        "html,body{margin:0;padding:0;background:#fff;font:14px system-ui,sans-serif}" +
+        "#map-print-loading{padding:1rem;margin:0}" +
+        "img{display:block;width:100%;max-width:100%;height:auto}" +
+        "@media print{#map-print-loading{display:none}}" +
+        "@media print{img{page-break-inside:avoid}}";
+
       doc.open();
-      doc.write('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Print map</title></head><body></body></html>');
+      doc.write("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Print map</title>");
+      doc.write("<style>" + printCss + "</style></head><body>");
+      doc.write('<p id="map-print-loading">Preparing map for print…</p>');
+      doc.write(
+        '<img id="map-print-img" src="' +
+          escapeHtmlAttr(resolvedSrc) +
+          '" alt="' +
+          escapeHtmlAttr(alt) +
+          '">'
+      );
+      doc.write("</body></html>");
       doc.close();
 
-      const style = doc.createElement('style');
-      style.textContent =
-        'html,body{margin:0;padding:0;background:#fff}img{display:block;width:100%;max-width:100%;height:auto}@media print{img{page-break-inside:avoid}}';
-      doc.head.appendChild(style);
+      const img = doc.getElementById("map-print-img");
+      const loadingEl = doc.getElementById("map-print-loading");
+      if (!img) {
+        window.alert("Could not prepare the print window.");
+        try {
+          printWin.close();
+        } catch (e) {
+          /* ignore */
+        }
+        return;
+      }
 
-      const img = doc.createElement('img');
-      img.alt = mapPreviewImg.getAttribute('alt') || 'Map';
-      img.src = src;
+      const loadTimeoutMs = 30000;
+      let loadTimer = window.setTimeout(() => {
+        window.alert("Could not load the map image for printing.");
+        try {
+          printWin.close();
+        } catch (e) {
+          /* ignore */
+        }
+      }, loadTimeoutMs);
 
+      function clearLoadTimer() {
+        if (loadTimer != null) {
+          window.clearTimeout(loadTimer);
+          loadTimer = null;
+        }
+      }
+
+      let printed = false;
       function runPrint() {
+        if (printed) return;
+        printed = true;
+        clearLoadTimer();
+        if (loadingEl && loadingEl.parentNode) loadingEl.remove();
         printWin.focus();
-        printWin.addEventListener('afterprint', () => {
-          try {
-            printWin.close();
-          } catch (e) { /* ignore */ }
-        }, { once: true });
+        printWin.addEventListener(
+          "afterprint",
+          () => {
+            try {
+              printWin.close();
+            } catch (e) {
+              /* ignore */
+            }
+          },
+          { once: true }
+        );
         printWin.print();
         window.setTimeout(() => {
           try {
             if (printWin && !printWin.closed) printWin.close();
-          } catch (e) { /* ignore */ }
+          } catch (e) {
+            /* ignore */
+          }
         }, 500);
       }
 
+      img.addEventListener("load", () => runPrint(), { once: true });
       img.onerror = () => {
+        clearLoadTimer();
+        window.alert("Could not load the map image for printing.");
         try {
           printWin.close();
-        } catch (e) { /* ignore */ }
-        window.alert('Could not load the map image for printing.');
+        } catch (e) {
+          /* ignore */
+        }
       };
 
-      doc.body.appendChild(img);
       if (img.complete && img.naturalWidth > 0) {
         runPrint();
-      } else {
-        img.onload = () => runPrint();
       }
     });
   }
