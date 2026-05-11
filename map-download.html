@@ -72,7 +72,7 @@
       </div>
 
       <p class="text-center text-muted text-sm map-download-no-print" style="margin-top: 1rem;">
-        Print Map uses your browser print dialog and prints only the map image (landscape often fits best for large maps).
+        Print Map opens a print preview with only the map image (landscape often fits best for large maps).
       </p>
 
       <div class="text-center map-download-no-print" style="margin-top: 2rem;">
@@ -96,7 +96,57 @@
       });
     }
 
-    document.getElementById('btn-print-map').addEventListener('click', () => window.print());
+    document.getElementById('btn-print-map').addEventListener('click', () => {
+      const mapImg = document.querySelector('.map-download-preview-img');
+      if (!mapImg) return;
+      const src = mapImg.currentSrc || mapImg.getAttribute('src');
+      if (!src) return;
+
+      const printWin = window.open('', '_blank', 'noopener,noreferrer');
+      if (!printWin) {
+        window.alert('Please allow pop-ups for this site to print the map.');
+        return;
+      }
+
+      printWin.document.open();
+      printWin.document.write('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Print map</title>');
+      printWin.document.write('<style>html,body{margin:0;padding:0;background:#fff}img{display:block;width:100%;max-width:100%;height:auto}@media print{img{page-break-inside:avoid}}</style>');
+      printWin.document.write('</head><body></body></html>');
+      printWin.document.close();
+
+      const img = printWin.document.createElement('img');
+      img.alt = mapImg.getAttribute('alt') || 'Map';
+      img.src = src;
+
+      function runPrint() {
+        printWin.focus();
+        printWin.addEventListener('afterprint', () => {
+          try {
+            printWin.close();
+          } catch (e) { /* ignore */ }
+        }, { once: true });
+        printWin.print();
+        window.setTimeout(() => {
+          try {
+            if (printWin && !printWin.closed) printWin.close();
+          } catch (e) { /* ignore */ }
+        }, 500);
+      }
+
+      img.onerror = () => {
+        try {
+          printWin.close();
+        } catch (e) { /* ignore */ }
+        window.alert('Could not load the map image for printing.');
+      };
+
+      printWin.document.body.appendChild(img);
+      if (img.complete && img.naturalWidth > 0) {
+        runPrint();
+      } else {
+        img.onload = () => runPrint();
+      }
+    });
   </script>
 </body>
 
