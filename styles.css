@@ -1931,8 +1931,8 @@ main {
 
 .template-card__preview {
   width: 100%;
-  margin: 0 0 0.65rem;
-  border-radius: 0.85rem;
+  margin: 0 0 1rem;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(0, 229, 255, 0.22);
   background: linear-gradient(
@@ -1950,17 +1950,30 @@ main {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 560 / 320;
-  object-fit: cover;
-  border-radius: inherit;
-  transition: transform 0.35s ease, filter 0.35s ease;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: filter 0.35s ease;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
 
 .template-card:hover .template-preview-img {
-  transform: scale(1.03);
-  filter: brightness(1.06) saturate(1.08);
+  filter: brightness(1.05) saturate(1.06);
+}
+
+.template-card__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+  width: 100%;
+  margin-top: auto;
+}
+
+.template-card__print {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .template-card__icon-wrap {

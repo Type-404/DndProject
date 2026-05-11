@@ -168,134 +168,187 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function escapeHtmlAttr(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;");
+  }
+
+  /**
+   * Opens a new window with a single image and prints after load (map, character templates, etc.).
+   */
+  function openPrintWindowForImage(resolvedSrc, altText, opts) {
+    const o = opts || {};
+    const docTitle = o.docTitle || "Print";
+    const loadingText = o.loadingText || "Preparing image for print…";
+    const popupBlockedMsg = o.popupBlockedMsg || "Please allow pop-ups for this site to print.";
+    const loadFailMsg = o.loadFailMsg || "Could not load the image for printing.";
+    const prepFailMsg = o.prepFailMsg || "Could not prepare the print window.";
+
+    if (!resolvedSrc) {
+      window.alert(o.missingSrcMsg || loadFailMsg);
+      return;
+    }
+
+    const printWin = window.open("", "_blank");
+    if (!printWin) {
+      window.alert(popupBlockedMsg);
+      return;
+    }
+
+    const doc = printWin.document;
+    const printCss =
+      "html,body{margin:0;padding:0;background:#fff;font:14px system-ui,sans-serif}" +
+      "#solo-print-loading{padding:1rem;margin:0}" +
+      "img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain}" +
+      "@media print{#solo-print-loading{display:none}}" +
+      "@media print{img{page-break-inside:avoid}}";
+
+    doc.open();
+    doc.write(
+      "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>" +
+        escapeHtmlAttr(docTitle) +
+        "</title>"
+    );
+    doc.write("<style>" + printCss + "</style></head><body>");
+    doc.write('<p id="solo-print-loading">' + escapeHtmlAttr(loadingText) + "</p>");
+    doc.write(
+      '<img id="solo-print-img" src="' +
+        escapeHtmlAttr(resolvedSrc) +
+        '" alt="' +
+        escapeHtmlAttr(altText || "Image") +
+        '">'
+    );
+    doc.write("</body></html>");
+    doc.close();
+
+    const img = doc.getElementById("solo-print-img");
+    const loadingEl = doc.getElementById("solo-print-loading");
+    if (!img) {
+      window.alert(prepFailMsg);
+      try {
+        printWin.close();
+      } catch (e) {
+        /* ignore */
+      }
+      return;
+    }
+
+    const loadTimeoutMs = 30000;
+    let loadTimer = window.setTimeout(() => {
+      window.alert(loadFailMsg);
+      try {
+        printWin.close();
+      } catch (e) {
+        /* ignore */
+      }
+    }, loadTimeoutMs);
+
+    function clearLoadTimer() {
+      if (loadTimer != null) {
+        window.clearTimeout(loadTimer);
+        loadTimer = null;
+      }
+    }
+
+    let printed = false;
+    function runPrint() {
+      if (printed) return;
+      printed = true;
+      clearLoadTimer();
+      if (loadingEl && loadingEl.parentNode) loadingEl.remove();
+      printWin.focus();
+      printWin.addEventListener(
+        "afterprint",
+        () => {
+          try {
+            printWin.close();
+          } catch (e) {
+            /* ignore */
+          }
+        },
+        { once: true }
+      );
+      printWin.print();
+      window.setTimeout(() => {
+        try {
+          if (printWin && !printWin.closed) printWin.close();
+        } catch (e) {
+          /* ignore */
+        }
+      }, 500);
+    }
+
+    img.addEventListener("load", () => runPrint(), { once: true });
+    img.onerror = () => {
+      clearLoadTimer();
+      window.alert(loadFailMsg);
+      try {
+        printWin.close();
+      } catch (e) {
+        /* ignore */
+      }
+    };
+
+    if (img.complete && img.naturalWidth > 0) {
+      runPrint();
+    }
+  }
+
+  function resolveImgSrc(imgEl) {
+    let resolvedSrc = "";
+    try {
+      resolvedSrc =
+        imgEl.currentSrc || new URL(imgEl.getAttribute("src") || "", document.baseURI).href;
+    } catch (e) {
+      resolvedSrc = imgEl.getAttribute("src") || "";
+    }
+    return resolvedSrc;
+  }
+
   // --- Map download: print preview with image only (new window) ---
   const printMapBtn = document.getElementById("btn-print-map");
   const mapPreviewImg = document.getElementById("map-download-preview");
   if (printMapBtn && mapPreviewImg) {
     printMapBtn.addEventListener("click", () => {
-      function escapeHtmlAttr(value) {
-        return String(value)
-          .replace(/&/g, "&amp;")
-          .replace(/"/g, "&quot;")
-          .replace(/</g, "&lt;");
-      }
-
-      let resolvedSrc = "";
-      try {
-        resolvedSrc =
-          mapPreviewImg.currentSrc ||
-          new URL(mapPreviewImg.getAttribute("src") || "", document.baseURI).href;
-      } catch (e) {
-        resolvedSrc = mapPreviewImg.getAttribute("src") || "";
-      }
+      const resolvedSrc = resolveImgSrc(mapPreviewImg);
       if (!resolvedSrc) {
         window.alert("Map image address is missing.");
         return;
       }
-
-      // Do not use noopener/noreferrer here: some browsers treat the new document
-      // as non-writable or leave about:blank without a reliably mutable document.
-      const printWin = window.open("", "_blank");
-      if (!printWin) {
-        window.alert("Please allow pop-ups for this site to print the map.");
-        return;
-      }
-
-      const doc = printWin.document;
-      const alt = mapPreviewImg.getAttribute("alt") || "Map";
-      const printCss =
-        "html,body{margin:0;padding:0;background:#fff;font:14px system-ui,sans-serif}" +
-        "#map-print-loading{padding:1rem;margin:0}" +
-        "img{display:block;width:100%;max-width:100%;height:auto}" +
-        "@media print{#map-print-loading{display:none}}" +
-        "@media print{img{page-break-inside:avoid}}";
-
-      doc.open();
-      doc.write("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Print map</title>");
-      doc.write("<style>" + printCss + "</style></head><body>");
-      doc.write('<p id="map-print-loading">Preparing map for print…</p>');
-      doc.write(
-        '<img id="map-print-img" src="' +
-          escapeHtmlAttr(resolvedSrc) +
-          '" alt="' +
-          escapeHtmlAttr(alt) +
-          '">'
-      );
-      doc.write("</body></html>");
-      doc.close();
-
-      const img = doc.getElementById("map-print-img");
-      const loadingEl = doc.getElementById("map-print-loading");
-      if (!img) {
-        window.alert("Could not prepare the print window.");
-        try {
-          printWin.close();
-        } catch (e) {
-          /* ignore */
-        }
-        return;
-      }
-
-      const loadTimeoutMs = 30000;
-      let loadTimer = window.setTimeout(() => {
-        window.alert("Could not load the map image for printing.");
-        try {
-          printWin.close();
-        } catch (e) {
-          /* ignore */
-        }
-      }, loadTimeoutMs);
-
-      function clearLoadTimer() {
-        if (loadTimer != null) {
-          window.clearTimeout(loadTimer);
-          loadTimer = null;
-        }
-      }
-
-      let printed = false;
-      function runPrint() {
-        if (printed) return;
-        printed = true;
-        clearLoadTimer();
-        if (loadingEl && loadingEl.parentNode) loadingEl.remove();
-        printWin.focus();
-        printWin.addEventListener(
-          "afterprint",
-          () => {
-            try {
-              printWin.close();
-            } catch (e) {
-              /* ignore */
-            }
-          },
-          { once: true }
-        );
-        printWin.print();
-        window.setTimeout(() => {
-          try {
-            if (printWin && !printWin.closed) printWin.close();
-          } catch (e) {
-            /* ignore */
-          }
-        }, 500);
-      }
-
-      img.addEventListener("load", () => runPrint(), { once: true });
-      img.onerror = () => {
-        clearLoadTimer();
-        window.alert("Could not load the map image for printing.");
-        try {
-          printWin.close();
-        } catch (e) {
-          /* ignore */
-        }
-      };
-
-      if (img.complete && img.naturalWidth > 0) {
-        runPrint();
-      }
+      openPrintWindowForImage(resolvedSrc, mapPreviewImg.getAttribute("alt") || "Map", {
+        docTitle: "Print map",
+        loadingText: "Preparing map for print…",
+        popupBlockedMsg: "Please allow pop-ups for this site to print the map.",
+        loadFailMsg: "Could not load the map image for printing.",
+        prepFailMsg: "Could not prepare the print window.",
+      });
     });
   }
+
+  // --- Character templates: print one template image (new window) ---
+  document.querySelectorAll(".btn-print-character-template").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const imgId = btn.getAttribute("data-print-img-id");
+      const imgEl = imgId ? document.getElementById(imgId) : null;
+      if (!imgEl || imgEl.tagName !== "IMG") {
+        window.alert("Could not find that template image on the page.");
+        return;
+      }
+      const resolvedSrc = resolveImgSrc(imgEl);
+      if (!resolvedSrc) {
+        window.alert("Template image address is missing.");
+        return;
+      }
+      openPrintWindowForImage(resolvedSrc, imgEl.getAttribute("alt") || "Character template", {
+        docTitle: "Print template",
+        loadingText: "Preparing template for print…",
+        popupBlockedMsg: "Please allow pop-ups for this site to print.",
+        loadFailMsg: "Could not load the template image for printing.",
+        prepFailMsg: "Could not prepare the print window.",
+      });
+    });
+  });
 
 });
