@@ -1428,8 +1428,30 @@ main {
 
 .student-dash-puzzle-card__desc {
   line-height: 1.6;
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.85rem;
   font-size: 0.9rem;
+}
+
+.student-dash-puzzle-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 0;
+}
+
+.student-dash-puzzle-input {
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  padding: 0.7rem 1rem;
+}
+
+.student-dash-puzzle-error {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--destructive);
+  margin: 0;
 }
 
 .student-dash-actions {

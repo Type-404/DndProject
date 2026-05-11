@@ -115,12 +115,26 @@
               <h2 class="student-dash-puzzle-card__title">Programming Puzzle</h2>
             </div>
             <p class="text-muted student-dash-puzzle-card__desc">
-              Only available for the Programmer role. Enter the access code from your teacher when you are ready.
+              Enter the access code from your teacher to start this puzzle.
             </p>
-            <button type="button" class="btn btn-lg glow-md w-full justify-center" id="btn-open-programming-puzzle">
-              <i data-lucide="key-round" style="width: 20px; height: 20px;"></i>
-              Open programming puzzle
-            </button>
+            <form id="puzzle-access-form" class="student-dash-puzzle-form" autocomplete="off">
+              <input
+                type="text"
+                id="puzzle-access-input"
+                class="input student-dash-puzzle-input"
+                placeholder="Access code…"
+                autocomplete="off"
+                spellcheck="false"
+              >
+              <p id="puzzle-access-error" class="student-dash-puzzle-error hidden">
+                <i data-lucide="x-circle" style="width:15px;height:15px;flex-shrink:0;"></i>
+                Incorrect code. Ask your teacher.
+              </p>
+              <button type="submit" class="btn btn-lg glow-md w-full justify-center" id="btn-open-programming-puzzle">
+                <i data-lucide="key-round" style="width: 20px; height: 20px;"></i>
+                Open programming puzzle
+              </button>
+            </form>
           </div>
 
           <nav class="student-dash-actions" aria-label="Session navigation">

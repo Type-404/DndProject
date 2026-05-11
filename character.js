@@ -106,8 +106,7 @@ class App {
             } catch (err) {
                 console.warn("Could not save party to localStorage:", err);
             }
-            const isProgrammer = this.gameState.character.role === "Programmer";
-            window.location.href = isProgrammer ? "game.html" : "role-overview.html";
+            window.location.href = "rules.html";
         });
     }
 
@@ -279,8 +278,7 @@ class App {
         } catch (err) {
             console.warn("Could not save party to localStorage:", err);
         }
-        const isProgrammer = this.gameState.character.role === "Programmer";
-        window.location.href = isProgrammer ? "game.html" : "role-overview.html";
+        window.location.href = "rules.html";
     }
 }
 
